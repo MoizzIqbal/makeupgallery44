@@ -1,0 +1,106 @@
+import React from "react";
+import logo from "../assets/images/logo.webp";
+import { FaInstagram } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { FaFacebookSquare } from "react-icons/fa";
+function Footer() {
+  return (
+    <>
+      <footer className="footer-area">
+        <div className="footer-main">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 col-lg-4">
+                <div className="widget-item">
+                  <div className="widget-about">
+                    <NavLink className="widget-logo" to="/">
+                      <img src={logo} width="95" height="68" alt="Logo" />
+                    </NavLink>
+                    <p className="desc">
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-5 mt-md-0 mt-9">
+                <div className="widget-item">
+                  <h4 className="widget-title">Information</h4>
+                  <ul className="widget-nav">
+                    <li>
+                      <NavLink to="/">Home</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/about">About us</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/contact">Contact us</NavLink>
+                    </li>
+                    <li>
+                      <a href="faq.html">Privacy</a>
+                    </li>
+
+                    <li>
+                      <NavLink to="/product">Shop</NavLink>
+                    </li>
+
+                    <li>
+                      <NavLink to="/faqs">FAQs</NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-3 mt-lg-0 mt-6">
+                <div className="widget-item">
+                  <h4 className="widget-title">Social Info</h4>
+                  <div className="widget-social">
+                    <a
+                      href="https://twitter.com/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <FaInstagram />
+                    </a>
+                    <a
+                      href="https://www.facebook.com/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <FaFacebookSquare />
+                    </a>
+                    <a
+                      href="https://www.pinterest.com/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <FaWhatsapp />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <div className="container pt-0 pb-0">
+            <div className="footer-bottom-content">
+              <p className="copyright">
+                © 2022 Brancy. Made with <i className="fa fa-heart"></i> by{" "}
+                <a
+                  target="_blank"
+                  href="https://themeforest.net/user/codecarnival"
+                >
+                  Codecarnival.
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
+
+export default Footer;

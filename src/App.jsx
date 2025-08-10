@@ -1,0 +1,44 @@
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "react-scroll-to-top";
+import { IoIosArrowUp } from "react-icons/io";
+import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import About from "./pages/ABout.jsx";
+import Contact from "./pages/Contact.jsx";
+import Faqs from "./pages/Faqs.jsx";
+import Products from "./pages/Products.jsx";
+import ProductDetail from './pages/ProductDetail.jsx'
+import PagenotFound from "./pages/PagenotFound";
+
+function App() {
+  return (
+    <>
+      <Router>
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/faqs" element={<Faqs />} />
+          <Route path="/products" element={<Products />} />
+          <Route path='/productdetail' element={<ProductDetail />} />
+          <Route path="*" element={<PagenotFound />} />
+        </Routes>
+        <Footer />
+        <ScrollToTop
+          smooth
+          component={<IoIosArrowUp size={24} color="#ff6565" />}
+          style={{ borderRadius: "50%" }}
+        />
+      </Router>
+    </>
+  );
+}
+
+export default App;
