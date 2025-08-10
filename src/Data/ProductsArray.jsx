@@ -1,0 +1,113 @@
+import product1 from "../assets/images/shop/1.webp";
+import product2 from "../assets/images/shop/2.webp";
+import product3 from "../assets/images/shop/3.webp";
+import product4 from "../assets/images/shop/4.webp";
+import product5 from "../assets/images/shop/5.webp";
+import product6 from "../assets/images/shop/6.webp";
+import product7 from "../assets/images/shop/7.webp";
+import product8 from "../assets/images/shop/8.webp";
+const products = [
+  {
+    id: 1,
+    name: "Velvet Matte Lipstick",
+    description:
+      "A long-lasting, highly pigmented matte lipstick with a smooth finish.",
+    category: "Lipstick",
+    price: 1200, // PKR
+    img: product1,
+    quantity: 50,
+    rating: 5,
+    reviews: 128,
+    brand: "GlamStudio",
+    shades: ["Crimson Red", "Rose Pink", "Nude Beige"],
+  },
+  {
+    id: 2,
+    name: "Glow & Shine Highlighter",
+    description: "Ultra-fine powder highlighter for a radiant, glowing finish.",
+    category: "Highlighter",
+    price: 1800,
+    img: product2,
+    quantity: 30,
+    rating: 4,
+    reviews: 95,
+    brand: "ShinePro",
+    shades: ["Champagne Glow", "Golden Hour"],
+  },
+  {
+    id: 3,
+    name: "Silk Touch Foundation",
+    description:
+      "Lightweight foundation that blends seamlessly for natural coverage.",
+    category: "Foundation",
+    price: 2500,
+    img: product3,
+    quantity: 40,
+    rating: 3,
+    reviews: 210,
+    brand: "BeautyBlend",
+    shades: ["Light Beige", "Medium Tan", "Warm Honey", "Deep Cocoa"],
+  },
+  {
+    id: 4,
+    name: "All-Day Waterproof Mascara",
+    description: "Smudge-proof and waterproof mascara for long-lasting volume.",
+    category: "Mascara",
+    price: 1500,
+    img: product4,
+    quantity: 60,
+    rating: 4,
+    reviews: 175,
+    brand: "EyeCharm",
+  },
+  {
+    id: 5,
+    name: "Rose Blush Palette",
+    description: "A set of 4 blush shades for a natural and radiant look.",
+    category: "Blush",
+    price: 2000,
+    img: product5,
+    quantity: 35,
+    rating: 4,
+    reviews: 89,
+    brand: "GlowArt",
+  },
+  {
+    id: 6,
+    name: "Rose Blush Palette",
+    description: "A set of 4 blush shades for a natural and radiant look.",
+    category: "Blush",
+    price: 2000,
+    img: product6,
+    quantity: 35,
+    rating: 5,
+    reviews: 89,
+    brand: "GlowArt",
+  },
+  {
+    id: 7,
+    name: "Rose Blush Palette",
+    description: "A set of 4 blush shades for a natural and radiant look.",
+    category: "Blush",
+    price: 2000,
+    img: product7,
+    quantity: 35,
+    rating: 4,
+    reviews: 89,
+    brand: "GlowArt",
+  },
+  {
+    id: 8,
+    name: "Rose Blush Palette",
+    description: "A set of 4 blush shades for a natural and radiant look.",
+    category: "Blush",
+    price: 2000,
+    img: product8,
+    quantity: 35,
+    rating: 5,
+    reviews: 89,
+    brand: "GlowArt",
+  },
+];
+
+export default products;

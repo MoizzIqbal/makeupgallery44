@@ -14,7 +14,7 @@ import Faqs from "./pages/Faqs.jsx";
 import Products from "./pages/Products.jsx";
 import ProductDetail from './pages/ProductDetail.jsx'
 import PagenotFound from "./pages/PagenotFound";
-
+import ProductCheckout from "./pages/ProductCheckout.jsx";
 function App() {
   return (
     <>
@@ -28,7 +28,9 @@ function App() {
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/products" element={<Products />} />
           <Route path='/productdetail' element={<ProductDetail />} />
+          <Route path='/checkout' element={<ProductCheckout />} />
           <Route path="*" element={<PagenotFound />} />
+
         </Routes>
         <Footer />
         <ScrollToTop
