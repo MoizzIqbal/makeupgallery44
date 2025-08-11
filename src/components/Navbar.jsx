@@ -12,7 +12,7 @@ function Navbar() {
             <div className="row align-items-center">
               <div className="col-5 col-lg-2 col-xl-1">
                 <div className="header-logo">
-                  <a href="index.html">
+                  <NavLink to="/">
                     <img
                       className="logo-main"
                       src={logo}
@@ -20,25 +20,23 @@ function Navbar() {
                       height="68"
                       alt="Logo"
                     />
-                  </a>
+                  </NavLink>
                 </div>
               </div>
               <div className="col-lg-7 col-xl-7 d-none d-lg-block">
                 <div className="header-navigation ps-7">
-                  <ul className="main-nav justify-content-start">
+                  <ul className="main-nav justify-content-center">
                     <li className="has-submenu">
                       <NavLink to="/">home</NavLink>
-                    
                     </li>
                     <li>
                       <NavLink to="/about">about</NavLink>
                     </li>
                     <li className="has-submenu position-static">
                       <NavLink to="products">shop</NavLink>
-                  
                     </li>
                     <li className="has-submenu">
-                      <a href="blog.html">Blog</a>
+                      <NavLink to="/blog">Blog</NavLink>
                       {/* <ul className="submenu-nav">
                         <li className="has-submenu">
                           <a href="#/">Blog Layout</a>
@@ -63,7 +61,7 @@ function Navbar() {
                         </li>
                       </ul> */}
                     </li>
-               
+
                     <li>
                       <NavLink to="/contact">Contact</NavLink>
                     </li>
@@ -83,18 +81,13 @@ function Navbar() {
                       <FaMagnifyingGlass />
                     </span>
                   </button>
-
-                  <button
-                    className="header-action-btn"
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#AsideOffcanvasCart"
-                    aria-controls="AsideOffcanvasCart"
-                  >
-                    <span className="icon">
-                      <FaShoppingCart />
-                    </span>
-                  </button>
+                  <NavLink to="/cart">
+                    <button className="header-action-btn">
+                      <span className="icon">
+                        <FaShoppingCart />
+                      </span>
+                    </button>
+                  </NavLink>
 
                   <button
                     className="header-menu-btn"
@@ -120,7 +113,7 @@ function Navbar() {
         <aside
           className="product-action-modal modal fade"
           id="action-WishlistModal"
-          tabindex="-1"
+          tabIndex="-1"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
@@ -148,7 +141,7 @@ function Navbar() {
                       />
                     </div>
                     <h4 className="product-name">
-                      <a href="product-details.html">Readable content DX22</a>
+                      <a >Readable content DX22</a>
                     </h4>
                   </div>
                 </div>
@@ -160,7 +153,7 @@ function Navbar() {
         <aside
           className="product-action-modal modal fade"
           id="action-CartAddModal"
-          tabindex="-1"
+          tabIndex="-1"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
@@ -188,7 +181,7 @@ function Navbar() {
                       />
                     </div>
                     <h4 className="product-name">
-                      <a href="product-details.html">Readable content DX22</a>
+                      <a >Readable content DX22</a>
                     </h4>
                   </div>
                 </div>
@@ -199,7 +192,7 @@ function Navbar() {
 
         <aside
           className="aside-search-box-wrapper offcanvas offcanvas-top"
-          tabindex="-1"
+          tabIndex="-1"
           id="AsideOffcanvasSearch"
           aria-labelledby="offcanvasTopLabel"
         >
@@ -224,7 +217,7 @@ function Navbar() {
                 </div>
                 <form action="#" method="post">
                   <div className="aside-search-form position-relative">
-                    <label for="SearchInput" className="visually-hidden">
+                    <label htmlFor="SearchInput" className="visually-hidden">
                       Search
                     </label>
                     <input
@@ -246,7 +239,7 @@ function Navbar() {
         <aside
           className="product-cart-view-modal modal fade"
           id="action-QuickViewModal"
-          tabindex="-1"
+          tabIndex="-1"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
@@ -288,7 +281,10 @@ function Navbar() {
                               <i className="fa fa-star-o"></i>
                               <i className="fa fa-star-half-o"></i>
                             </div>
-                            <button type="button" className="product-review-show">
+                            <button
+                              type="button"
+                              className="product-review-show"
+                            >
                               150 reviews
                             </button>
                           </div>
@@ -301,7 +297,7 @@ function Navbar() {
                           </p>
                           <div className="product-details-pro-qty">
                             <div className="pro-qty">
-                              <input type="text" title="Quantity" value="01" />
+                              <input type="text" title="Quantity" value="1" />
                             </div>
                           </div>
                           <div className="product-details-action">
@@ -328,72 +324,8 @@ function Navbar() {
         </aside>
 
         <aside
-          className="aside-cart-wrapper offcanvas offcanvas-end"
-          tabindex="-1"
-          id="AsideOffcanvasCart"
-          aria-labelledby="offcanvasRightLabel"
-        >
-          <div className="offcanvas-header">
-            <h1 className="d-none" id="offcanvasRightLabel">
-              Shopping Cart
-            </h1>
-            <button
-              className="btn-aside-cart-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            >
-              Shopping Cart <i className="fa fa-chevron-right"></i>
-            </button>
-          </div>
-          <div className="offcanvas-body">
-            <ul className="aside-cart-product-list">
-              <li className="aside-product-list-item">
-                <a href="#/" className="remove">
-                  ×
-                </a>
-                <a href="product-details.html">
-                  <img
-                    src="assets/images/shop/cart1.webp"
-                    width="68"
-                    height="84"
-                    alt="Image"
-                  />
-                  <span className="product-title">Leather Mens Slipper</span>
-                </a>
-                <span className="product-price">1 × £69.99</span>
-              </li>
-              <li className="aside-product-list-item">
-                <a href="#/" className="remove">
-                  ×
-                </a>
-                <a href="product-details.html">
-                  <img
-                    src="assets/images/shop/cart2.webp"
-                    width="68"
-                    height="84"
-                    alt="Image"
-                  />
-                  <span className="product-title">Quickiin Mens shoes</span>
-                </a>
-                <span className="product-price">1 × £20.00</span>
-              </li>
-            </ul>
-            <p className="cart-total">
-              <span>Subtotal:</span>
-              <span className="amount">£89.99</span>
-            </p>
-            <a className="btn-total" href="product-cart.html">
-              View cart
-            </a>
-            <a className="btn-total" href="product-checkout.html">
-              Checkout
-            </a>
-          </div>
-        </aside>
-
-        <aside
           className="off-canvas-wrapper offcanvas offcanvas-start"
-          tabindex="-1"
+          tabIndex="-1"
           id="AsideOffcanvasMenu"
           aria-labelledby="offcanvasExampleLabel"
         >
@@ -412,148 +344,48 @@ function Navbar() {
           <div className="offcanvas-body">
             <div id="offcanvasNav" className="offcanvas-menu-nav">
               <ul>
-                <li className="offcanvas-nav-parent">
-                  <a className="offcanvas-nav-item" href="#">
+                <li
+                  className="offcanvas-nav-parent"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                >
+                  <NavLink className="offcanvas-nav-item" to="/">
                     home
-                  </a>
-                  <ul>
-                    <li>
-                      <a href="index.html">Home One</a>
-                    </li>
-                    <li>
-                      <a href="index-two.html">Home Two</a>
-                    </li>
-                  </ul>
+                  </NavLink>
                 </li>
-                <li className="offcanvas-nav-parent">
-                  <a className="offcanvas-nav-item" href="about-us.html">
+                <li
+                  className="offcanvas-nav-parent"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                >
+                  <NavLink className="offcanvas-nav-item" to="/about">
                     about
-                  </a>
+                  </NavLink>
                 </li>
-                <li className="offcanvas-nav-parent">
-                  <a className="offcanvas-nav-item" href="#">
+                <li
+                  className="offcanvas-nav-parent"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                >
+                  <NavLink className="offcanvas-nav-item" to="/products">
                     shop
-                  </a>
-                  <ul>
-                    <li>
-                      <a href="#" className="offcanvas-nav-item">
-                        Shop Layout
-                      </a>
-                      <ul>
-                        <li>
-                          <a href="product.html">Shop 3 Column</a>
-                        </li>
-                        <li>
-                          <a href="product-four-columns.html">Shop 4 Column</a>
-                        </li>
-                        <li>
-                          <a href="product-left-sidebar.html">
-                            Shop Left Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a href="product-right-sidebar.html">
-                            Shop Right Sidebar
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="#" className="offcanvas-nav-item">
-                        Single Product
-                      </a>
-                      <ul>
-                        <li>
-                          <a href="product-details-normal.html">
-                            Single Product Normal
-                          </a>
-                        </li>
-                        <li>
-                          <a href="product-details.html">
-                            Single Product Variable
-                          </a>
-                        </li>
-                        <li>
-                          <a href="product-details-group.html">
-                            Single Product Group
-                          </a>
-                        </li>
-                        <li>
-                          <a href="product-details-affiliate.html">
-                            Single Product Affiliate
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="#" className="offcanvas-nav-item">
-                        Others Pages
-                      </a>
-                      <ul>
-                        <li>
-                          <a href="product-cart.html">Shopping Cart</a>
-                        </li>
-                        <li>
-                          <a href="product-checkout.html">Checkout</a>
-                        </li>
-                        <li>
-                          <a href="product-wishlist.html">Wishlist</a>
-                        </li>
-                        <li>
-                          <a href="product-compare.html">Compare</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
+                  </NavLink>
                 </li>
+
                 <li className="offcanvas-nav-parent">
-                  <a className="offcanvas-nav-item" href="#">
-                    Blog
-                  </a>
-                  <ul>
-                    <li>
-                      <a className="offcanvas-nav-item" href="#">
-                        Blog Layout
-                      </a>
-                      <ul>
-                        <li>
-                          <a href="blog.html">Blog Grid</a>
-                        </li>
-                        <li>
-                          <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-                        </li>
-                        <li>
-                          <a href="blog-right-sidebar.html">
-                            Blog Right Sidebar
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="blog-details.html">Blog Details</a>
-                    </li>
-                  </ul>
+                  <NavLink className="offcanvas-nav-item" to="/blogs">
+                    Blogs
+                  </NavLink>
+                
                 </li>
-                <li className="offcanvas-nav-parent">
-                  <a className="offcanvas-nav-item" href="#">
-                    Pages
-                  </a>
-                  <ul>
-                    <li>
-                      <a href="account-login.html">My Account</a>
-                    </li>
-                    <li>
-                      <a href="faq.html">Frequently Questions</a>
-                    </li>
-                    <li>
-                      <a href="page-not-found.html">Page Not Found</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="offcanvas-nav-parent">
-                  <a className="offcanvas-nav-item" href="contact.html">
+                <li
+                  className="offcanvas-nav-parent"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                >
+                  <NavLink className="offcanvas-nav-item" to="/contact">
                     Contact
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>

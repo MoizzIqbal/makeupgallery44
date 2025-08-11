@@ -4,11 +4,15 @@ import productbanner from "../assets/images/shop/banner/7.webp";
 import product1 from "../assets/images/shop/1.webp";
 import product2 from "../assets/images/shop/2.webp";
 import product3 from "../assets/images/shop/3.webp";
+import { useParams } from "react-router-dom";
 function ProductDetail() {
+  const { id } = useParams();
+  console.log(id);
+
   return (
     <>
-      <main className="main-content mt-5">
-        {/* <section className="page-header-area pt-10 pb-9" data-bg-color="#FFF3DA">
+      <main className="main-content">
+        <section className="page-header-area pt-10 pb-9" style={{backgroundColor:'#FFF3DA'}} >
           <div className="container">
             <div className="row">
               <div className="col-md-5">
@@ -36,9 +40,9 @@ function ProductDetail() {
               </div>
             </div>
           </div>
-        </section> */}
+        </section>
 
-        <section className="">
+        <section className="section-space">
           <div className="container">
             <div className="row product-details">
               <div className="col-lg-6">
@@ -49,7 +53,6 @@ function ProductDetail() {
                     height="693"
                     alt="Image"
                   />
-                  <span className="flag-new">new</span>
                 </div>
               </div>
               <div className="col-lg-6">
@@ -124,9 +127,9 @@ function ProductDetail() {
             />
           </a>
         </div>
-            <section className="section-space">
+        <section className="section-space">
           <div className="container">
-                <div className="row">
+            <div className="row">
               <div className="col-12">
                 <div className="section-title">
                   <h2 className="title">Related Products</h2>
@@ -400,12 +403,8 @@ function ProductDetail() {
                       </div>
                     </div>
                   </div>
-                 
-
-                 
                 </div>
               </div>
-             
             </div>
           </div>
         </section>

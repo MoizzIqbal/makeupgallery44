@@ -9,7 +9,10 @@ function Products() {
   return (
     <>
       <main className="main-content mt-5">
-        {/* <section className="page-header-area pt-10 pb-9" data-bg-color="#FFF3DA">
+        <section
+          className="page-header-area pt-10 pb-9"
+          style={{ backgroundColor: "#FFF3DA" }}
+        >
           <div className="container">
             <div className="row">
               <div className="col-md-5">
@@ -37,7 +40,7 @@ function Products() {
               </div>
             </div>
           </div>
-        </section> */}
+        </section>
 
         <section className="section-space">
           <div className="container">
@@ -51,7 +54,7 @@ function Products() {
                     >
                       <div className="product-item product-st3-item">
                         <div className="product-thumb">
-                          <NavLink className="d-block" to="/productdetail">
+                          <NavLink className="d-block" to={`/productdetail/${item.id}`}>
                             <img
                               src={item.img}
                               width="370"
@@ -96,10 +99,14 @@ function Products() {
                                   <i className="fa fa-star-o" key={index}></i>
                                 ))}
                             </div>
-                            <div className="reviews">{item.reviews} reviews</div>
+                            <div className="reviews">
+                              {item.reviews} reviews
+                            </div>
                           </div>
                           <h4 className="title">
-                            <NavLink to="/productdetail">{item.name}</NavLink>
+                            <NavLink to={`/productdetail/${item.id}`}>
+                              {item.name}
+                            </NavLink>
                           </h4>
                           <div className="prices">
                             <span className="price">RS {item.price}</span>
@@ -234,7 +241,6 @@ function Products() {
                           Nails <span>(12)</span>
                         </a>
                       </li>
-                    
                     </ul>
                   </div>
                   <div className="product-widget mb-0">

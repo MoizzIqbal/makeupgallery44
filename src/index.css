@@ -177,11 +177,11 @@ hr {
   }
 }
 .header-area .container {
-  max-width: 1733px;
+  /* max-width: 1733px; */
 }
 .header-transparent {
   background-color: transparent;
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   top: 0;
   width: 100%;
@@ -7459,3 +7459,13 @@ hr {
   font-size: 14px;
   padding: 18px 24px;
 }
+.pt-10 {
+    padding-top: 3.125rem !important;
+}
+.pb-9 {
+    padding-bottom: 2.8125rem !important;
+}
+.offcanvas-backdrop{
+  z-index: 0 !important;
+}
+

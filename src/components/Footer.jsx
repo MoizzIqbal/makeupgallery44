@@ -4,6 +4,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { FaFacebookSquare } from "react-icons/fa";
+import moment from "moment";
 function Footer() {
   return (
     <>
@@ -38,11 +39,11 @@ function Footer() {
                       <NavLink to="/contact">Contact us</NavLink>
                     </li>
                     <li>
-                      <a href="faq.html">Privacy</a>
+                      <NavLink to="/faqs">Privacy</NavLink>
                     </li>
 
                     <li>
-                      <NavLink to="/product">Shop</NavLink>
+                      <NavLink to="/products">Shop</NavLink>
                     </li>
 
                     <li>
@@ -87,13 +88,8 @@ function Footer() {
           <div className="container pt-0 pb-0">
             <div className="footer-bottom-content">
               <p className="copyright">
-                © 2022 Brancy. Made with <i className="fa fa-heart"></i> by{" "}
-                <a
-                  target="_blank"
-                  href="https://themeforest.net/user/codecarnival"
-                >
-                  Codecarnival.
-                </a>
+                © {moment().format("YYYY")} MakeupGallery44. All Rights Reserved
+             
               </p>
             </div>
           </div>

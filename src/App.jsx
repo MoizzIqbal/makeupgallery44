@@ -12,9 +12,11 @@ import About from "./pages/ABout.jsx";
 import Contact from "./pages/Contact.jsx";
 import Faqs from "./pages/Faqs.jsx";
 import Products from "./pages/Products.jsx";
-import ProductDetail from './pages/ProductDetail.jsx'
+import ProductDetail from "./pages/ProductDetail.jsx";
 import PagenotFound from "./pages/PagenotFound";
 import ProductCheckout from "./pages/ProductCheckout.jsx";
+import Cart from "./pages/Cart.jsx";
+import OrderConfirmation from "./pages/OrderConfirmation.jsx";
 function App() {
   return (
     <>
@@ -27,10 +29,11 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/products" element={<Products />} />
-          <Route path='/productdetail' element={<ProductDetail />} />
-          <Route path='/checkout' element={<ProductCheckout />} />
+          <Route path="/productdetail/:id" element={<ProductDetail />} />
+          <Route path="/checkout" element={<ProductCheckout />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/confirmation" element={<OrderConfirmation />} />
           <Route path="*" element={<PagenotFound />} />
-
         </Routes>
         <Footer />
         <ScrollToTop
