@@ -162,7 +162,7 @@ function ProductDetail() {
         </section>
 
         <div className="container">
-          <a href="product.html" className="product-banner-item">
+          <a href="" className="product-banner-item">
             <img
               src={productbanner}
               width="1170"
@@ -198,7 +198,7 @@ function ProductDetail() {
                             alt="Image-HasTech"
                           />
                         </NavLink>
-                        <span className="flag-new">new</span>
+                        {/* <span className="flag-new">new</span> */}
                         <div className="product-action">
                           <button
                             type="button"
@@ -286,7 +286,7 @@ function ProductDetail() {
                             alt="Image-HasTech"
                           />
                         </NavLink>
-                        <span className="flag-new">new</span>
+                        {/* <span className="flag-new">new</span> */}
                         <div className="product-action">
                           <button
                             type="button"
@@ -372,7 +372,7 @@ function ProductDetail() {
                             alt="Image-HasTech"
                           />
                         </NavLink>
-                        <span className="flag-new">new</span>
+                        {/* <span className="flag-new">new</span> */}
                         <div className="product-action">
                           <button
                             type="button"

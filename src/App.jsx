@@ -17,6 +17,7 @@ import PagenotFound from "./pages/PagenotFound";
 import ProductCheckout from "./pages/ProductCheckout.jsx";
 import Cart from "./pages/Cart.jsx";
 import OrderConfirmation from "./pages/OrderConfirmation.jsx";
+import Blogs from "./pages/Blogs.jsx";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faqs" element={<Faqs />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route path="/products" element={<Products />} />
           <Route path="/productdetail/:id" element={<ProductDetail />} />
           <Route path="/checkout" element={<ProductCheckout />} />
