@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import productbanner from "../assets/images/shop/banner/7.webp";
 import products from "../Data/ProductsArray";
 import { NavLink } from "react-router-dom";
-
+import { Pagination } from "@mantine/core";
 console.log(products);
 
 function Products() {
+  // ----------matnain pagination-----------
+
+  const [activePage, setPage] = useState(1);
+  const itemsPerPage = 6; // or whatever number you want per page
+  const startIndex = (activePage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = products.slice(startIndex, endIndex);
   return (
     <>
       <main className="main-content mt-5">
@@ -35,7 +42,7 @@ function Products() {
               </div>
               <div className="col-md-7">
                 <h5 className="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">
-                  Showing 09 Results
+                  Showing {products.length} Results
                 </h5>
               </div>
             </div>
@@ -47,14 +54,17 @@ function Products() {
             <div className="row justify-content-between flex-xl-row-reverse">
               <div className="col-xl-9">
                 <div className="row g-3 g-sm-6">
-                  {products.map((item, index) => (
+                  {currentItems.map((item, index) => (
                     <div
                       className="col-6 col-lg-4 col-xl-4 mb-4 mb-sm-8"
                       key={index}
                     >
                       <div className="product-item product-st3-item">
                         <div className="product-thumb">
-                          <NavLink className="d-block" to={`/productdetail/${item.id}`}>
+                          <NavLink
+                            className="d-block"
+                            to={`/productdetail/${item.id}`}
+                          >
                             <img
                               src={item.img}
                               width="370"
@@ -143,7 +153,7 @@ function Products() {
                     </div>
                   ))}
                   <div className="col-12">
-                    <ul className="pagination justify-content-center me-auto ms-auto mt-5 mb-10">
+                    {/* <ul className="pagination justify-content-center me-auto ms-auto mt-5 mb-10">
                       <li className="page-item">
                         <a
                           className="page-link previous"
@@ -188,14 +198,22 @@ function Products() {
                           ></span>
                         </a>
                       </li>
-                    </ul>
+                    </ul> */}
+
+                    <div className="d-flex justify-content-center mt-4">
+                      <Pagination
+                        total={Math.ceil(products.length / itemsPerPage)}
+                        value={activePage}
+                        onChange={setPage}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="col-xl-3">
                 <div className="product-sidebar-widget">
                   <div className="product-widget-search">
-                    <form action="#">
+                    <form>
                       <input type="search" placeholder="Search Here" />
                       <button type="submit">
                         <i className="fa fa-search"></i>

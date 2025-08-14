@@ -4,7 +4,9 @@ import productbanner from "../assets/images/shop/banner/7.webp";
 import product1 from "../assets/images/shop/1.webp";
 import product2 from "../assets/images/shop/2.webp";
 import product3 from "../assets/images/shop/3.webp";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+import "@mantine/carousel/styles.css";
+import { Carousel } from "@mantine/carousel";
 function ProductDetail() {
   const { id } = useParams();
   console.log(id);
@@ -12,7 +14,10 @@ function ProductDetail() {
   return (
     <>
       <main className="main-content">
-        <section className="page-header-area pt-10 pb-9" style={{backgroundColor:'#FFF3DA'}} >
+        <section
+          className="page-header-area pt-10 pb-9"
+          style={{ backgroundColor: "#FFF3DA" }}
+        >
           <div className="container">
             <div className="row">
               <div className="col-md-5">
@@ -47,12 +52,50 @@ function ProductDetail() {
             <div className="row product-details">
               <div className="col-lg-6">
                 <div className="product-details-thumb">
-                  <img
+                  {/* <img
                     src={productdetailimg}
                     width="570"
                     height="693"
                     alt="Image"
-                  />
+                  /> */}
+                  <Carousel withIndicators height={500}>
+                    <Carousel.Slide>
+                      {" "}
+                      <img
+                        src={product1}
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          objectFit: "cover",
+                        }}
+                        alt="Image"
+                      />
+                    </Carousel.Slide>
+                    <Carousel.Slide>
+                      {" "}
+                      <img
+                        src={product2}
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          objectFit: "cover",
+                        }}
+                        alt="Image"
+                      />
+                    </Carousel.Slide>
+                    <Carousel.Slide>
+                      {" "}
+                      <img
+                        src={product3}
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          objectFit: "cover",
+                        }}
+                        alt="Image"
+                      />
+                    </Carousel.Slide>
+                  </Carousel>
                 </div>
               </div>
               <div className="col-lg-6">
@@ -104,6 +147,7 @@ function ProductDetail() {
                       <button
                         type="button"
                         className="btn"
+                        
                         data-bs-toggle="modal"
                         data-bs-target="#action-CartAddModal"
                       >
@@ -146,14 +190,14 @@ function ProductDetail() {
                   <div className="col-6 col-lg-4 col-xl-4 mb-4 mb-sm-8">
                     <div className="product-item product-st3-item">
                       <div className="product-thumb">
-                        <a className="d-block" href="product-details.html">
+                        <NavLink className="d-block"  to='/productdetail'>
                           <img
                             src={product1}
                             width="370"
                             height="450"
                             alt="Image-HasTech"
                           />
-                        </a>
+                        </NavLink>
                         <span className="flag-new">new</span>
                         <div className="product-action">
                           <button
@@ -234,14 +278,14 @@ function ProductDetail() {
                   <div className="col-6 col-lg-4 col-xl-4 mb-4 mb-sm-8">
                     <div className="product-item product-st3-item">
                       <div className="product-thumb">
-                        <a className="d-block" href="product-details.html">
+                        <NavLink className="d-block"  to='/productdetail'>
                           <img
                             src={product2}
                             width="370"
                             height="450"
                             alt="Image-HasTech"
                           />
-                        </a>
+                        </NavLink>
                         <span className="flag-new">new</span>
                         <div className="product-action">
                           <button
@@ -320,14 +364,14 @@ function ProductDetail() {
                   <div className="col-6 col-lg-4 col-xl-4 mb-4 mb-sm-8">
                     <div className="product-item product-st3-item">
                       <div className="product-thumb">
-                        <a className="d-block" href="product-details.html">
+                        <NavLink className="d-block"  to='/productdetail/1'>
                           <img
                             src={product3}
                             width="370"
                             height="450"
                             alt="Image-HasTech"
                           />
-                        </a>
+                        </NavLink>
                         <span className="flag-new">new</span>
                         <div className="product-action">
                           <button
