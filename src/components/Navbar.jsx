@@ -36,7 +36,7 @@ function Navbar() {
                       <NavLink to="products">Shop</NavLink>
                     </li>
                     <li className="has-submenu">
-                      <NavLink to="/blog">Blog</NavLink>
+                      <NavLink to="/blogs">Blog</NavLink>
                       {/* <ul className="submenu-nav">
                         <li className="has-submenu">
                           <a href="#/">Blog Layout</a>

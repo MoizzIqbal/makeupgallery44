@@ -57,7 +57,7 @@ function Footer() {
                   <h4 className="widget-title">Social Info</h4>
                   <div className="widget-social">
                     <a
-                      href="https://twitter.com/"
+                      href="https://www.instagram.com/makeupgallery.44?igsh=eTBrZzFicnF0YWFs"
                       target="_blank"
                       rel="noopener"
                     >
@@ -71,9 +71,9 @@ function Footer() {
                       <FaFacebookSquare />
                     </a>
                     <a
-                      href="https://www.pinterest.com/"
+                      href="https://wa.me/923064492925" // Replace with your phone number (no spaces, plus sign optional)
                       target="_blank"
-                      rel="noopener"
+                      rel="noopener noreferrer"
                     >
                       <FaWhatsapp />
                     </a>
@@ -89,7 +89,6 @@ function Footer() {
             <div className="footer-bottom-content">
               <p className="copyright">
                 © {moment().format("YYYY")} MakeupGallery44. All Rights Reserved
-             
               </p>
             </div>
           </div>

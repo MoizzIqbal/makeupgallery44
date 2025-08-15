@@ -11,6 +11,8 @@ function Contact() {
     message: "",
   });
 
+  const [isValid, setIsValid] = useState(false);
+
   const handelChange = (e) => {
     const { name, value } = e.target;
     setFormdata((prev) => ({ ...prev, [name]: value }));
@@ -18,13 +20,27 @@ function Contact() {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    setFormdata({
-      fname: "",
-      lname: "",
-      email: "",
-      message: "",
-    });
+    setIsValid(true);
+ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ 
+    if (
+      formData.fname &&
+      formData.lname &&
+      formData.email &&
+      formData.message
+    ) {
+      alert("ihuh");
+      console.log(formData);
+      setFormdata({
+        fname: "",
+        lname: "",
+        email: "",
+        message: "",
+      });
+      setIsValid(false);
+      return;
+    }
+     
   };
   return (
     <>
@@ -42,7 +58,14 @@ function Contact() {
                 </div>
 
                 <div className="contact-form">
-                  <form id="contact-form" onSubmit={formSubmit}>
+                  <form
+                    id="contact-form"
+                    onSubmit={formSubmit}
+                    className={`needs-validation ${
+                      isValid ? "was-validated" : ""
+                    }`}
+                    noValidate
+                  >
                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group">
@@ -79,6 +102,7 @@ function Contact() {
                             value={formData.email}
                             onChange={handelChange}
                             placeholder="Email address"
+                            
                             required
                           />
                         </div>

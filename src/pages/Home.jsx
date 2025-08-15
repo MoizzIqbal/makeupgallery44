@@ -84,7 +84,7 @@ function Home() {
           <div className="container">
             <div className="row g-3 g-sm-6">
               <div className="col-6 col-lg-4 col-lg-2 col-xl-2">
-                <a href="product.html" className="product-category-item">
+                <a href="" className="product-category-item">
                   <img
                     className="icon"
                     src={cat1}
@@ -97,7 +97,7 @@ function Home() {
               </div>
               <div className="col-6 col-lg-4 col-lg-2 col-xl-2">
                 <a
-                  href="product.html"
+                  href=""
                   className="product-category-item"
                   style={{ backgroundColor: "#FFEDB4" }}
                 >
@@ -113,7 +113,7 @@ function Home() {
               </div>
               <div className="col-6 col-lg-4 col-lg-2 col-xl-2 mt-lg-0 mt-sm-6 mt-4">
                 <a
-                  href="product.html"
+                  href=""
                   className="product-category-item"
                   style={{ backgroundColor: "#DFE4FF" }}
                 >
@@ -129,7 +129,7 @@ function Home() {
               </div>
               <div className="col-6 col-lg-4 col-lg-2 col-xl-2 mt-xl-0 mt-sm-6 mt-4">
                 <a
-                  href="product.html"
+                  href=""
                   className="product-category-item"
                   style={{ backgroundColor: "#FFEACC" }}
                 >
@@ -145,7 +145,7 @@ function Home() {
               </div>
               <div className="col-6 col-lg-4 col-lg-2 col-xl-2 mt-xl-0 mt-sm-6 mt-4">
                 <a
-                  href="product.html"
+                  href=""
                   className="product-category-item"
                   style={{ backgroundColor: "#FFDAE0" }}
                 >
@@ -161,7 +161,7 @@ function Home() {
               </div>
               <div className="col-6 col-lg-4 col-lg-2 col-xl-2 mt-xl-0 mt-sm-6 mt-4">
                 <a
-                  href="product.html"
+                  href=""
                   className="product-category-item"
                   style={{ backgroundColor: "#FFF3DA" }}
                 >
