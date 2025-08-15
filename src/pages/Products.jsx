@@ -62,7 +62,7 @@ function Products() {
                               alt="Image-HasTech"
                             />
                           </NavLink>
-                          <span className="flag-new">new</span>
+                          {/* <span className="flag-new">new</span> */}
                           <div className="product-action">
                             <button
                               type="button"

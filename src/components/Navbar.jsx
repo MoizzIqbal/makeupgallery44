@@ -27,13 +27,13 @@ function Navbar() {
                 <div className="header-navigation ps-7">
                   <ul className="main-nav justify-content-center">
                     <li className="has-submenu">
-                      <NavLink to="/">home</NavLink>
+                      <NavLink to="/">Home</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/about">about</NavLink>
+                      <NavLink to="/about">About</NavLink>
                     </li>
                     <li className="has-submenu position-static">
-                      <NavLink to="products">shop</NavLink>
+                      <NavLink to="products">Shop</NavLink>
                     </li>
                     <li className="has-submenu">
                       <NavLink to="/blog">Blog</NavLink>
@@ -350,7 +350,7 @@ function Navbar() {
                   aria-label="Close"
                 >
                   <NavLink className="offcanvas-nav-item" to="/">
-                    home
+                    Home
                   </NavLink>
                 </li>
                 <li
@@ -359,7 +359,7 @@ function Navbar() {
                   aria-label="Close"
                 >
                   <NavLink className="offcanvas-nav-item" to="/about">
-                    about
+                    About
                   </NavLink>
                 </li>
                 <li
@@ -368,7 +368,7 @@ function Navbar() {
                   aria-label="Close"
                 >
                   <NavLink className="offcanvas-nav-item" to="/products">
-                    shop
+                    Shop
                   </NavLink>
                 </li>
 
