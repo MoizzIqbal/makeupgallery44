@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import faqimg from "../assets/images/photos/faq-home.webp";
 import faqtext from "../assets/images/photos/faq.webp";
 import { NavLink } from "react-router-dom";
 function Faqs() {
+  
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // or "auto" if you want instant
+      });
+    }, []);
   return (
     <>
       <main className="main-content">

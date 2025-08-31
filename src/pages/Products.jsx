@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import productbanner from "../assets/images/shop/banner/7.webp";
 import products from "../Data/ProductsArray";
 import { NavLink } from "react-router-dom";
@@ -6,13 +6,21 @@ import { Pagination } from "@mantine/core";
 console.log(products);
 
 function Products() {
+  const [search, setSearch] = useState("");
   // ----------matnain pagination-----------
-
   const [activePage, setPage] = useState(1);
   const itemsPerPage = 6; // or whatever number you want per page
   const startIndex = (activePage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentItems = products.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // or "auto" if you want instant
+    });
+  }, []);
+
   return (
     <>
       <main className="main-content mt-5">
@@ -51,6 +59,17 @@ function Products() {
 
         <section className="section-space">
           <div className="container">
+            <div className="d-block d-xl-none mb-5 text-center">
+              <button
+                className="btn btn-dark"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#filterSidebar"
+                aria-controls="filterSidebar"
+              >
+                <i className="fa fa-filter me-2"></i> Filters
+              </button>
+            </div>
             <div className="row justify-content-between flex-xl-row-reverse">
               <div className="col-xl-9">
                 <div className="row g-3 g-sm-6">
@@ -157,7 +176,7 @@ function Products() {
                       <li className="page-item">
                         <a
                           className="page-link previous"
-                          href="product.html"
+                          
                           aria-label="Previous"
                         >
                           <span
@@ -167,29 +186,29 @@ function Products() {
                         </a>
                       </li>
                       <li className="page-item">
-                        <a className="page-link" href="product.html">
+                        <a className="page-link" >
                           01
                         </a>
                       </li>
                       <li className="page-item">
-                        <a className="page-link" href="product.html">
+                        <a className="page-link" >
                           02
                         </a>
                       </li>
                       <li className="page-item">
-                        <a className="page-link" href="product.html">
+                        <a className="page-link" >
                           03
                         </a>
                       </li>
                       <li className="page-item">
-                        <a className="page-link" href="product.html">
+                        <a className="page-link" >
                           ....
                         </a>
                       </li>
                       <li className="page-item">
                         <a
                           className="page-link next"
-                          href="product.html"
+                          
                           aria-label="Next"
                         >
                           <span
@@ -210,11 +229,17 @@ function Products() {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3">
+              <div className="col-xl-3 d-none d-xl-block">
                 <div className="product-sidebar-widget">
                   <div className="product-widget-search">
                     <form>
-                      <input type="search" placeholder="Search Here" />
+                      <input
+                        type="search"
+                        name="search"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search Here"
+                      />
                       <button type="submit">
                         <i className="fa fa-search"></i>
                       </button>
@@ -235,27 +260,27 @@ function Products() {
                     <h4 className="product-widget-title">Categoris</h4>
                     <ul className="product-widget-category p-0">
                       <li>
-                        <a href="product.html">
+                        <a >
                           Lipstics <span>(5)</span>
                         </a>
                       </li>
                       <li>
-                        <a href="product.html">
+                        <a >
                           Blush <span>(4)</span>
                         </a>
                       </li>
                       <li>
-                        <a href="product.html">
+                        <a >
                           -Highlighter <span>(2)</span>
                         </a>
                       </li>
                       <li>
-                        <a href="product.html">
+                        <a >
                           Foundations <span>(6)</span>
                         </a>
                       </li>
                       <li>
-                        <a href="product.html">
+                        <a >
                           Nails <span>(12)</span>
                         </a>
                       </li>
@@ -289,13 +314,111 @@ function Products() {
                   </div>
                 </div>
               </div>
+              <div
+                className="offcanvas offcanvas-start"
+                tabIndex="-1"
+                id="filterSidebar"
+                aria-labelledby="filterSidebarLabel"
+              >
+                <div className="offcanvas-header">
+                  <h5 id="filterSidebarLabel">Filters</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="offcanvas-body">
+                  {/* 👇 Put your current filters here */}
+                  <div className="product-sidebar-widget">
+                    <div className="product-widget-search">
+                      <form>
+                        <input
+                          type="search"
+                          name="search"
+                          value={search}
+                          onChange={(e) => setSearch(e.target.value)}
+                          placeholder="Search Here"
+                        />
+                        <button type="submit">
+                          <i className="fa fa-search"></i>
+                        </button>
+                      </form>
+                    </div>
+
+                    {/* Other filters: price, categories, tags */}
+                    <div className="product-widget">
+                      <h4 className="product-widget-title">Price Filter</h4>
+                      ...
+                    </div>
+
+                    <div className="product-widget">
+                      <h4 className="product-widget-title">Categoris</h4>
+                      <ul className="product-widget-category p-0">
+                        <li>
+                          <a>
+                            Lipstics <span>(5)</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a >
+                            Blush <span>(4)</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            -Highlighter <span>(2)</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            Foundations <span>(6)</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            Nails <span>(12)</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="product-widget mb-0">
+                      <h4 className="product-widget-title">Popular Tags</h4>
+                      <ul className="product-widget-tags p-0">
+                        <li>
+                          <a>Beauty</a>
+                        </li>
+                        <li>
+                          <a>MakeupArtist</a>
+                        </li>
+                        <li>
+                          <a>Makeup</a>
+                        </li>
+                        <li>
+                          <a>Hair</a>
+                        </li>
+                        <li>
+                          <a>Nails</a>
+                        </li>
+                        <li>
+                          <a>Hairstyle</a>
+                        </li>
+                        <li>
+                          <a>Skincare</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <section>
           <div className="container">
-            <a href="product.html" className="product-banner-item">
+            <a  className="product-banner-item">
               <img
                 src={productbanner}
                 width="1170"

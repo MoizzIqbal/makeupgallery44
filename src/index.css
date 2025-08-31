@@ -1706,7 +1706,7 @@ hr {
 }
 .hero-slide-item {
   background-color: #fafafa;
-  height: 1000px !important;
+  height: 700px !important;
   z-index: 1;
   display: flex;
   align-items: center;

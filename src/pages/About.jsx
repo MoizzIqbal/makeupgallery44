@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import abouttext from "../assets/images/photos/about-title.webp";
 import aboutbg from "../assets/images/photos/about1.webp";
 import about2 from "../assets/images/photos/about2.webp";
@@ -9,10 +9,30 @@ import brandlogo1 from "../assets/images/brand-logo/1.webp";
 import brandlogo2 from "../assets/images/brand-logo/2.webp";
 import brandlogo3 from "../assets/images/brand-logo/3.webp";
 import brandlogo4 from "../assets/images/brand-logo/4.webp";
+import { NavLink } from "react-router-dom";
 function ABout() {
+  
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // or "auto" if you want instant
+      });
+    }, []);
   return (
     <>
       <main className="main-content">
+          <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
+          <div class="container">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item">
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                About Us
+              </li>
+            </ol>
+          </div>
+        </nav>
         <section className="page-header-area">
           <div className="container">
             <div className="row align-items-center">

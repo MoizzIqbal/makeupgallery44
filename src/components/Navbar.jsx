@@ -32,7 +32,7 @@ function Navbar() {
                     <li>
                       <NavLink to="/about">about</NavLink>
                     </li>
-                    <li className="has-submenu position-static">
+                    <li className="has-submenu">
                       <NavLink to="products">shop</NavLink>
                     </li>
                     <li className="has-submenu">
@@ -62,7 +62,7 @@ function Navbar() {
                       </ul> */}
                     </li>
 
-                    <li>
+                    <li className="has-submenu">
                       <NavLink to="/contact">Contact</NavLink>
                     </li>
                   </ul>
@@ -141,7 +141,7 @@ function Navbar() {
                       />
                     </div>
                     <h4 className="product-name">
-                      <a >Readable content DX22</a>
+                      <a>Readable content DX22</a>
                     </h4>
                   </div>
                 </div>
@@ -181,7 +181,7 @@ function Navbar() {
                       />
                     </div>
                     <h4 className="product-name">
-                      <a >Readable content DX22</a>
+                      <a>Readable content DX22</a>
                     </h4>
                   </div>
                 </div>
@@ -372,11 +372,14 @@ function Navbar() {
                   </NavLink>
                 </li>
 
-                <li className="offcanvas-nav-parent">
+                <li
+                  className="offcanvas-nav-parent"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                >
                   <NavLink className="offcanvas-nav-item" to="/blogs">
                     Blogs
                   </NavLink>
-                
                 </li>
                 <li
                   className="offcanvas-nav-parent"

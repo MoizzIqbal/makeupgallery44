@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import contactimg from "../assets/images/photos/contact.webp";
 import callicon from "../assets/images/icons/1.webp";
 import emailicon from "../assets/images/icons/2.webp";
 import locicon from "../assets/images/icons/3.webp";
 function Contact() {
+
   const [formData, setFormdata] = useState({
     fname: "",
     lname: "",
@@ -13,6 +15,12 @@ function Contact() {
 
   const [isValid, setIsValid] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // or "auto" if you want instant
+    });
+  }, []);
   const handelChange = (e) => {
     const { name, value } = e.target;
     setFormdata((prev) => ({ ...prev, [name]: value }));
@@ -21,13 +29,14 @@ function Contact() {
   const formSubmit = (e) => {
     e.preventDefault();
     setIsValid(true);
- const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
  
     if (
       formData.fname &&
       formData.lname &&
       formData.email &&
-      formData.message
+      formData.message&&
+      emailRegex.test(formData.email)
     ) {
       alert("ihuh");
       console.log(formData);
@@ -45,6 +54,18 @@ function Contact() {
   return (
     <>
       <main className="main-content">
+          <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
+          <div class="container">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item">
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Contact
+              </li>
+            </ol>
+          </div>
+        </nav>
         <section className="contact-area">
           <div className="container">
             <div className="row">

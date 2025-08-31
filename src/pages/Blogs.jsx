@@ -1,9 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { NavLink } from "react-router-dom";
 import text from "../assets/images/photos/page-header-text1.webp";
 import blog1 from "../assets/images/blog/1.webp";
 import blog2 from "../assets/images/blog/2.webp";
 import blog3 from "../assets/images/blog/3.webp";
 function Blogs() {
+  
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // or "auto" if you want instant
+      });
+    }, []);
   return (
     <>
       <main class="main-content">
@@ -11,7 +19,7 @@ function Blogs() {
           <div class="container">
             <ol class="breadcrumb justify-content-center">
               <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Blog

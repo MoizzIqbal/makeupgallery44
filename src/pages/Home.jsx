@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import texttheme from "../assets/images/slider/text-theme.webp";
 import text1 from "../assets/images/slider/text1.webp";
 import slider1 from "../assets/images/slider/slider1.webp";
@@ -17,6 +17,13 @@ import products from "../Data/ProductsArray";
 import { NavLink } from "react-router-dom";
 
 function Home() {
+  
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // or "auto" if you want instant
+      });
+    }, []);
   return (
     <>
       <main className="main-content">
@@ -71,7 +78,7 @@ function Home() {
             <a href="" target="_blank" rel="noopener">
               <i className="fa fa-whatsapp"></i>
             </a>
-            <a href="" target="_blank" rel="noopener">
+            <a href="https://www.instagram.com/makeupgallery.44?igsh=eTBrZzFicnF0YWFs2" target="_blank" rel="noopener">
               <i className="fa fa-instagram"></i>
             </a>
             <a href="" target="_blank" rel="noopener">
