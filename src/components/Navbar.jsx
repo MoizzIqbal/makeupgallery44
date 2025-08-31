@@ -368,7 +368,7 @@ function Navbar() {
                   aria-label="Close"
                 >
                   <NavLink className="offcanvas-nav-item" to="/products">
-                    Shop
+                    Shopppppp
                   </NavLink>
                 </li>
 
