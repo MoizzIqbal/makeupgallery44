@@ -4,8 +4,8 @@ import contactimg from "../assets/images/photos/contact.webp";
 import callicon from "../assets/images/icons/1.webp";
 import emailicon from "../assets/images/icons/2.webp";
 import locicon from "../assets/images/icons/3.webp";
+import { motion } from "framer-motion";
 function Contact() {
-
   const [formData, setFormdata] = useState({
     fname: "",
     lname: "",
@@ -30,12 +30,12 @@ function Contact() {
     e.preventDefault();
     setIsValid(true);
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
- 
+
     if (
       formData.fname &&
       formData.lname &&
       formData.email &&
-      formData.message&&
+      formData.message &&
       emailRegex.test(formData.email)
     ) {
       alert("ihuh");
@@ -49,12 +49,12 @@ function Contact() {
       setIsValid(false);
       return;
     }
-     
   };
+
   return (
     <>
       <main className="main-content">
-          <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
+        <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
           <div class="container">
             <ol class="breadcrumb justify-content-center">
               <li class="breadcrumb-item">
@@ -69,7 +69,7 @@ function Contact() {
         <section className="contact-area">
           <div className="container">
             <div className="row">
-              <div className="offset-lg-6 col-lg-6">
+              <div className="offset-lg-6 col-lg-6 wow animate__animated animate__fadeInRight">
                 <div className="section-title position-relative">
                   <h2 className="title">Get in touch</h2>
                   <p className="m-0">
@@ -123,7 +123,6 @@ function Contact() {
                             value={formData.email}
                             onChange={handelChange}
                             placeholder="Email address"
-                            
                             required
                           />
                         </div>
@@ -142,9 +141,15 @@ function Contact() {
                       </div>
                       <div className="col-12">
                         <div className="form-group mb-0">
-                          <button className="btn btn-sm" type="submit">
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9, rotate: 3 }}
+                            className="btn btn-sm"
+                            type="submit"
+                            transition={{ type: "spring", stiffness: 300 }}
+                          >
                             SUBMIT
-                          </button>
+                          </motion.button>
                         </div>
                       </div>
                     </div>
@@ -156,7 +161,7 @@ function Contact() {
             </div>
           </div>
           <div
-            className="contact-left-img"
+            className="contact-left-img wow animate__animated animate__fadeInLeft"
             style={{ backgroundImage: `url(${contactimg})` }}
           ></div>
         </section>

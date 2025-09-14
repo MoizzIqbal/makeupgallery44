@@ -3,16 +3,20 @@ import productbanner from "../assets/images/shop/banner/7.webp";
 import products from "../Data/ProductsArray";
 import { NavLink } from "react-router-dom";
 import { Pagination } from "@mantine/core";
-console.log(products);
+import { allproducts } from "../utils/allproducts";
+console.log(allproducts);
 
 function Products() {
   const [search, setSearch] = useState("");
+  const [starfilter, setStarFilter] = useState('')
+  const [filterProducts, setFilterProducts] = useState(allproducts);
+  const [cartItem, setCartItem] = useState(null);
   // ----------matnain pagination-----------
   const [activePage, setPage] = useState(1);
-  const itemsPerPage = 6; // or whatever number you want per page
+  const itemsPerPage = 20; // or whatever number you want per page
   const startIndex = (activePage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItems = products.slice(startIndex, endIndex);
+  const currentItems = filterProducts.slice(startIndex, endIndex);
 
   useEffect(() => {
     window.scrollTo({
@@ -21,8 +25,74 @@ function Products() {
     });
   }, []);
 
+  useEffect(() => {
+    const filtered = allproducts.filter((item) =>
+      item.title.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilterProducts(filtered);
+  }, [search]);
+  const uniquecategories = [
+    ...new Set(allproducts.map((item) => item.category)),
+  ];
+  console.log(uniquecategories);
+
+  const selectedCategory = (selectedCategory) => {
+    console.log(selectedCategory);
+    const filtercategory = allproducts.filter(
+      (item) => item.category === selectedCategory
+    );
+    setFilterProducts(filtercategory);
+  };
+
+  const addtocart = (namee) => {
+    console.log(namee);
+    setCartItem(namee);
+  };
   return (
     <>
+      <aside
+        className="product-action-modal modal fade"
+        id="action-CartAddModal"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-body">
+              <div className="product-action-view-content">
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                >
+                  <i className="fa fa-times"></i>
+                </button>
+                <div className="modal-action-messages">
+                  <i className="fa fa-check-square-o"></i> Added to cart
+                  successfully!
+                </div>
+                {cartItem && (
+                  <div className="modal-action-product">
+                    <div className="thumb">
+                      <img
+                        src={cartItem.image}
+                        alt={cartItem.title}
+                        width="466"
+                        height="200"
+                        style={{ objectFit: "contain", height: "200px" }}
+                      />
+                    </div>
+                    <h4 className="product-name">
+                      <a>{cartItem.title}</a>
+                    </h4>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
       <main className="main-content mt-5">
         <section
           className="page-header-area pt-10 pb-9"
@@ -50,7 +120,7 @@ function Products() {
               </div>
               <div className="col-md-7">
                 <h5 className="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">
-                  Showing {products.length} Results
+                  Showing {filterProducts.length} Results
                 </h5>
               </div>
             </div>
@@ -82,10 +152,10 @@ function Products() {
                         <div className="product-thumb">
                           <NavLink
                             className="d-block"
-                            to={`/productdetail/${item.id}`}
+                            to={`/productdetail/${item.slug}`}
                           >
                             <img
-                              src={item.img}
+                              src={item.image}
                               width="370"
                               height="450"
                               alt="Image-HasTech"
@@ -93,48 +163,52 @@ function Products() {
                           </NavLink>
                           {/* <span className="flag-new">new</span> */}
                           <div className="product-action">
-                            <button
+                            {/* <button
                               type="button"
                               className="product-action-btn action-btn-quick-view"
                               data-bs-toggle="modal"
                               data-bs-target="#action-QuickViewModal"
+                              onClick={() => addtocart(item)}
                             >
                               <i className="fa fa-expand"></i>
-                            </button>
+                            </button> */}
                             <button
                               type="button"
                               className="product-action-btn action-btn-cart"
                               data-bs-toggle="modal"
                               data-bs-target="#action-CartAddModal"
+                              onClick={() => addtocart(item)}
                             >
-                              <span>Add to cart</span>
+                              <span>Adddd to cart</span>
                             </button>
-                            <button
+                            {/* <button
                               type="button"
                               className="product-action-btn action-btn-wishlist"
                               data-bs-toggle="modal"
                               data-bs-target="#action-WishlistModal"
                             >
                               <i className="fa fa-heart-o"></i>
-                            </button>
+                            </button> */}
                           </div>
                         </div>
                         <div className="product-info">
                           <div className="product-rating">
                             <div className="rating">
-                              {Array(item.rating)
-                                .fill(0)
-                                .map((_, index) => (
-                                  <i className="fa fa-star-o" key={index}></i>
-                                ))}
+                              {item.rating ? (
+                                Array(item.rating)
+                                  .fill(0)
+                                  .map((_, index) => (
+                                    <i className="fa fa-star-o" key={index}></i>
+                                  ))
+                              ) : (
+                                <span>no rating</span>
+                              )}
                             </div>
-                            <div className="reviews">
-                              {item.reviews} reviews
-                            </div>
+                            <div className="reviews">Brand: {item.brand}</div>
                           </div>
                           <h4 className="title">
                             <NavLink to={`/productdetail/${item.id}`}>
-                              {item.name}
+                              {item.title}
                             </NavLink>
                           </h4>
                           <div className="prices">
@@ -143,85 +217,40 @@ function Products() {
                           </div>
                         </div>
                         <div className="product-action-bottom">
-                          <button
+                          {/* <button
                             type="button"
                             className="product-action-btn action-btn-quick-view"
                             data-bs-toggle="modal"
                             data-bs-target="#action-QuickViewModal"
+                             onClick={() => addtocart(item)}
                           >
                             <i className="fa fa-expand"></i>
-                          </button>
-                          <button
+                          </button> */}
+                          {/* <button
                             type="button"
                             className="product-action-btn action-btn-wishlist"
                             data-bs-toggle="modal"
                             data-bs-target="#action-WishlistModal"
                           >
                             <i className="fa fa-heart-o"></i>
-                          </button>
+                          </button> */}
                           <button
                             type="button"
                             className="product-action-btn action-btn-cart"
                             data-bs-toggle="modal"
                             data-bs-target="#action-CartAddModal"
+                            onClick={() => addtocart(item)}
                           >
-                            <span>Add to cart</span>
+                            <span>Add to carttt</span>
                           </button>
                         </div>
                       </div>
                     </div>
                   ))}
                   <div className="col-12">
-                    {/* <ul className="pagination justify-content-center me-auto ms-auto mt-5 mb-10">
-                      <li className="page-item">
-                        <a
-                          className="page-link previous"
-                          
-                          aria-label="Previous"
-                        >
-                          <span
-                            className="fa fa-chevron-left"
-                            aria-hidden="true"
-                          ></span>
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" >
-                          01
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" >
-                          02
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" >
-                          03
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" >
-                          ....
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a
-                          className="page-link next"
-                          
-                          aria-label="Next"
-                        >
-                          <span
-                            className="fa fa-chevron-right"
-                            aria-hidden="true"
-                          ></span>
-                        </a>
-                      </li>
-                    </ul> */}
-
                     <div className="d-flex justify-content-center mt-4">
                       <Pagination
-                        total={Math.ceil(products.length / itemsPerPage)}
+                        total={Math.ceil(allproducts.length / itemsPerPage)}
                         value={activePage}
                         onChange={setPage}
                       />
@@ -229,23 +258,22 @@ function Products() {
                   </div>
                 </div>
               </div>
+
               <div className="col-xl-3 d-none d-xl-block">
                 <div className="product-sidebar-widget">
                   <div className="product-widget-search">
-                    <form>
-                      <input
-                        type="search"
-                        name="search"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Search Here"
-                      />
-                      <button type="submit">
-                        <i className="fa fa-search"></i>
-                      </button>
-                    </form>
+                    <input
+                      type="search"
+                      name="search"
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder="Search Here"
+                    />
+                    <button type="submit">
+                      <i className="fa fa-search"></i>
+                    </button>
                   </div>
-                  <div className="product-widget">
+                  {/* <div className="product-widget">
                     <h4 className="product-widget-title">Price Filter</h4>
                     <div className="product-widget-range-slider">
                       <div className="slider-range" id="slider-range"></div>
@@ -255,60 +283,109 @@ function Products() {
                         <span id="slider-range-value2"></span>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="product-widget">
-                    <h4 className="product-widget-title">Categoris</h4>
+                    <h4 className="product-widget-title">Filter By Star</h4>
                     <ul className="product-widget-category p-0">
                       <li>
-                        <a >
-                          Lipstics <span>(5)</span>
-                        </a>
+                        <input
+                          type="checkbox"
+                          id="rating5"
+                          name="rating"
+                          value="5"
+                        />{" "}
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
                       </li>
                       <li>
-                        <a >
-                          Blush <span>(4)</span>
-                        </a>
+                        <input
+                          type="checkbox"
+                          id="rating4"
+                          name="rating"
+                          value="4"
+                        />{" "}
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
                       </li>
                       <li>
-                        <a >
-                          -Highlighter <span>(2)</span>
-                        </a>
+                        <input
+                          type="checkbox"
+                          id="rating3"
+                          name="rating"
+                          value="4"
+                        />{" "}
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
                       </li>
                       <li>
-                        <a >
-                          Foundations <span>(6)</span>
-                        </a>
+                        <input
+                          type="checkbox"
+                          id="rating2"
+                          name="rating"
+                          value="2"
+                        />{" "}
+                        <i className="fa fa-star-o"></i>
+                        <i className="fa fa-star-o"></i>
                       </li>
                       <li>
-                        <a >
-                          Nails <span>(12)</span>
-                        </a>
+                        <input
+                          type="checkbox"
+                          id="rating1"
+                          name="rating"
+                          value="1"
+                        />{" "}
+                        <i className="fa fa-star-o"></i>
                       </li>
                     </ul>
                   </div>
-                  <div className="product-widget mb-0">
+                  <div className="product-widget">
+                    <h4 className="product-widget-title">Categories</h4>
+                    <ul className="product-widget-category p-0">
+                      {uniquecategories.map((item, index) => (
+                        <li key={index}>
+                          <a onClick={() => selectedCategory(item)}>{item}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="product-widget ">
+                    <h4 className="product-widget-title">Reset All Filters</h4>
+                    <p
+                      className="btn btn-border-dark text-center"
+                      onClick={() => setFilterProducts(allproducts)}
+                    >
+                      Reset
+                    </p>
+                  </div>
+                  <div className="product-widget">
                     <h4 className="product-widget-title">Popular Tags</h4>
                     <ul className="product-widget-tags p-0">
                       <li>
-                        <a href="blog.html">Beauty</a>
+                        <a>Beauty</a>
                       </li>
                       <li>
-                        <a href="blog.html">MakeupArtist</a>
+                        <a>MakeupArtist</a>
                       </li>
                       <li>
-                        <a href="blog.html">Makeup</a>
+                        <a>Makeup</a>
                       </li>
                       <li>
-                        <a href="blog.html">Hair</a>
+                        <a>Hair</a>
                       </li>
                       <li>
-                        <a href="blog.html">Nails</a>
+                        <a>Nails</a>
                       </li>
                       <li>
-                        <a href="blog.html">Hairstyle</a>
+                        <a>Hairstyle</a>
                       </li>
                       <li>
-                        <a href="blog.html">Skincare</a>
+                        <a>Skincare</a>
                       </li>
                     </ul>
                   </div>
@@ -333,55 +410,54 @@ function Products() {
                   {/* 👇 Put your current filters here */}
                   <div className="product-sidebar-widget">
                     <div className="product-widget-search">
-                      <form>
-                        <input
-                          type="search"
-                          name="search"
-                          value={search}
-                          onChange={(e) => setSearch(e.target.value)}
-                          placeholder="Search Here"
-                        />
-                        <button type="submit">
-                          <i className="fa fa-search"></i>
-                        </button>
-                      </form>
+                      <input
+                        type="search"
+                        name="search"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search Here"
+                      />
+                      <button
+                        type="submit"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                      >
+                        <i className="fa fa-search"></i>
+                      </button>
                     </div>
 
                     {/* Other filters: price, categories, tags */}
-                    <div className="product-widget">
+                    {/* <div className="product-widget">
                       <h4 className="product-widget-title">Price Filter</h4>
                       ...
-                    </div>
+                    </div> */}
 
                     <div className="product-widget">
                       <h4 className="product-widget-title">Categoris</h4>
                       <ul className="product-widget-category p-0">
-                        <li>
-                          <a>
-                            Lipstics <span>(5)</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a >
-                            Blush <span>(4)</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                            -Highlighter <span>(2)</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                            Foundations <span>(6)</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a>
-                            Nails <span>(12)</span>
-                          </a>
-                        </li>
+                        {uniquecategories.map((item, index) => (
+                          <li key={index}>
+                            <a
+                              onClick={() => selectedCategory(item)}
+                              data-bs-dismiss="offcanvas"
+                              aria-label="Close"
+                            >
+                              {item}
+                            </a>
+                          </li>
+                        ))}
                       </ul>
+                    </div>
+                    <div className="product-widget ">
+                      <h4 className="product-widget-title">
+                        Reset All Filters
+                      </h4>
+                      <p
+                        className="btn btn-border-dark text-center"
+                        onClick={() => setFilterProducts(allproducts)}
+                      >
+                        Reset
+                      </p>
                     </div>
                     <div className="product-widget mb-0">
                       <h4 className="product-widget-title">Popular Tags</h4>
@@ -418,7 +494,7 @@ function Products() {
 
         <section>
           <div className="container">
-            <a  className="product-banner-item">
+            <a className="product-banner-item">
               <img
                 src={productbanner}
                 width="1170"

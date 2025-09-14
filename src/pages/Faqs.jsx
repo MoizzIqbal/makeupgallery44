@@ -42,8 +42,7 @@ function Faqs() {
                   <h2 className="faq-title">Frequently Questions</h2>
                   <div className="faq-line"></div>
                   <p className="faq-desc">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem has been the industry's standard
+                  <i>Find quick answers to common questions about our products, shipping, and services.</i>
                   </p>
                 </div>
               </div>
@@ -61,8 +60,7 @@ function Faqs() {
                         aria-expanded="true"
                         aria-controls="collapse1"
                       >
-                        Mauris congue euismod purus at semper. Morbi et
-                        vulputate massa?
+                       What types of makeup products do you offer?
                       </button>
                     </h2>
                     <div
@@ -73,11 +71,7 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                          Donec mattis finibus elit ut tristique. Nullam tempus
-                          nunc eget arcu vulputate, eu porttitor tellus commodo.
-                          Aliquam erat volutpat. Aliquam consectetur lorem eu
-                          viverra lobortis. Morbi gravida, nisi id fringilla
-                          ultricies, elit lorem eleifend lorem
+                         We provide a wide range of cosmetics including lipsticks, foundations, blushes, eyeshadows, highlighters, and more from trusted brands.
                         </p>
                       </div>
                     </div>
@@ -92,7 +86,7 @@ function Faqs() {
                         aria-expanded="false"
                         aria-controls="collapse2"
                       >
-                        Donec mattis finibus elit ut tristique?
+                        How can I choose the right shade for my skin tone?
                       </button>
                     </h2>
                     <div
@@ -103,11 +97,7 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                          Donec mattis finibus elit ut tristique. Nullam tempus
-                          nunc eget arcu vulputate, eu porttitor tellus commodo.
-                          Aliquam erat volutpat. Aliquam consectetur lorem eu
-                          viverra lobortis. Morbi gravida, nisi id fringilla
-                          ultricies, elit lorem eleifend lorem
+                          Each product includes shade details and recommendations. You can also contact our support team for personalized guidance.
                         </p>
                       </div>
                     </div>
@@ -122,7 +112,7 @@ function Faqs() {
                         aria-expanded="false"
                         aria-controls="collapse3"
                       >
-                        Aenean elit orci, efficitur quis nisl at, accumsan?
+                        What payment methods do you accept?
                       </button>
                     </h2>
                     <div
@@ -133,11 +123,7 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                          Donec mattis finibus elit ut tristique. Nullam tempus
-                          nunc eget arcu vulputate, eu porttitor tellus commodo.
-                          Aliquam erat volutpat. Aliquam consectetur lorem eu
-                          viverra lobortis. Morbi gravida, nisi id fringilla
-                          ultricies, elit lorem eleifend lorem
+                         We accept major credit/debit cards, bank transfers, and Cash on Delivery (COD) in selected locations.
                         </p>
                       </div>
                     </div>
@@ -152,7 +138,7 @@ function Faqs() {
                         aria-expanded="false"
                         aria-controls="collapse4"
                       >
-                        Pellentesque habitant morbi tristique senectus et netus?
+                       How long will it take to receive my order?
                       </button>
                     </h2>
                     <div
@@ -163,11 +149,7 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                          Donec mattis finibus elit ut tristique. Nullam tempus
-                          nunc eget arcu vulputate, eu porttitor tellus commodo.
-                          Aliquam erat volutpat. Aliquam consectetur lorem eu
-                          viverra lobortis. Morbi gravida, nisi id fringilla
-                          ultricies, elit lorem eleifend lorem
+                         Orders are usually delivered within 3–5 business days, depending on your location.
                         </p>
                       </div>
                     </div>
@@ -182,7 +164,7 @@ function Faqs() {
                         aria-expanded="false"
                         aria-controls="collapse5"
                       >
-                        Nam pellentesque aliquam metus?
+                        How can I track my order?
                       </button>
                     </h2>
                     <div
@@ -193,11 +175,7 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                          Donec mattis finibus elit ut tristique. Nullam tempus
-                          nunc eget arcu vulputate, eu porttitor tellus commodo.
-                          Aliquam erat volutpat. Aliquam consectetur lorem eu
-                          viverra lobortis. Morbi gravida, nisi id fringilla
-                          ultricies, elit lorem eleifend lorem
+                        Once your order is confirmed, you will receive a tracking ID and link via email or SMS to track your shipment in real-time.
                         </p>
                       </div>
                     </div>
@@ -212,7 +190,7 @@ function Faqs() {
                         aria-expanded="false"
                         aria-controls="collapse6"
                       >
-                        Aenean elit orci, efficitur quis nisl at?
+                        How are shipping charges calculated?
                       </button>
                     </h2>
                     <div
@@ -223,11 +201,7 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                          Donec mattis finibus elit ut tristique. Nullam tempus
-                          nunc eget arcu vulputate, eu porttitor tellus commodo.
-                          Aliquam erat volutpat. Aliquam consectetur lorem eu
-                          viverra lobortis. Morbi gravida, nisi id fringilla
-                          ultricies, elit lorem eleifend lorem
+                          Shipping fees are calculated based on your delivery location, package weight, and the courier service selected.
                         </p>
                       </div>
                     </div>
@@ -242,7 +216,7 @@ function Faqs() {
                         aria-expanded="false"
                         aria-controls="collapse7"
                       >
-                        Morbi gravida, nisi id fringilla ultricies, elit lorem?
+                        Can I combine shipping charges if I order multiple items?
                       </button>
                     </h2>
                     <div
@@ -253,45 +227,12 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                          Donec mattis finibus elit ut tristique. Nullam tempus
-                          nunc eget arcu vulputate, eu porttitor tellus commodo.
-                          Aliquam erat volutpat. Aliquam consectetur lorem eu
-                          viverra lobortis. Morbi gravida, nisi id fringilla
-                          ultricies, elit lorem eleifend lorem
+                         Yes, if all items are ordered together, shipping is charged only once based on the combined package weight.
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="accordion-item">
-                    <h2 className="accordion-header" id="heading8">
-                      <button
-                        className="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapse8"
-                        aria-expanded="false"
-                        aria-controls="collapse8"
-                      >
-                        Aenean elit orci, efficitur quis nisl at, accumsan?
-                      </button>
-                    </h2>
-                    <div
-                      id="collapse8"
-                      className="accordion-collapse collapse"
-                      aria-labelledby="heading8"
-                      data-bs-parent="#FaqAccordion"
-                    >
-                      <div className="accordion-body">
-                        <p>
-                          Donec mattis finibus elit ut tristique. Nullam tempus
-                          nunc eget arcu vulputate, eu porttitor tellus commodo.
-                          Aliquam erat volutpat. Aliquam consectetur lorem eu
-                          viverra lobortis. Morbi gravida, nisi id fringilla
-                          ultricies, elit lorem eleifend lorem
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                
                 </div>
               </div>
             </div>

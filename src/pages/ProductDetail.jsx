@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import productdetailimg from "../assets/images/shop/product-details/2.webp";
 import productbanner from "../assets/images/shop/banner/7.webp";
 import product1 from "../assets/images/shop/1.webp";
@@ -7,9 +7,18 @@ import product3 from "../assets/images/shop/3.webp";
 import { NavLink, useParams } from "react-router-dom";
 import "@mantine/carousel/styles.css";
 import { Carousel } from "@mantine/carousel";
+import { allproducts } from "../utils/allproducts";
 function ProductDetail() {
-  const { id } = useParams();
-  console.log(id);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // or "auto" if you want instant
+    });
+  }, []);
+
+  const { slug } = useParams();
+  const product = allproducts.find((item) => item.slug === slug);
+  console.log(product);
 
   return (
     <>
@@ -59,72 +68,43 @@ function ProductDetail() {
                     alt="Image"
                   /> */}
                   <Carousel withIndicators height={500}>
-                    <Carousel.Slide>
-                      {" "}
-                      <img
-                        src={product1}
-                        style={{
-                          height: "100%",
-                          width: "100%",
-                          objectFit: "cover",
-                        }}
-                        alt="Image"
-                      />
-                    </Carousel.Slide>
-                    <Carousel.Slide>
-                      {" "}
-                      <img
-                        src={product2}
-                        style={{
-                          height: "100%",
-                          width: "100%",
-                          objectFit: "cover",
-                        }}
-                        alt="Image"
-                      />
-                    </Carousel.Slide>
-                    <Carousel.Slide>
-                      {" "}
-                      <img
-                        src={product3}
-                        style={{
-                          height: "100%",
-                          width: "100%",
-                          objectFit: "cover",
-                        }}
-                        alt="Image"
-                      />
-                    </Carousel.Slide>
+                    {product.detailImages.map((img, index) => (
+                      <Carousel.Slide>
+                        {" "}
+                        <img
+                          src={img}
+                          style={{
+                            height: "100%",
+                            width: "100%",
+                            objectFit: "cover",
+                          }}
+                          alt="Image"
+                        />
+                      </Carousel.Slide>
+                    ))}
                   </Carousel>
                 </div>
               </div>
               <div className="col-lg-6">
                 <div className="product-details-content">
                   <h5 className="product-details-collection">
-                    Premioum collection
+                 <strong>Brand Name:</strong>   {product.brand}
                   </h5>
-                  <h3 className="product-details-title">
-                    Offbline Instant Age Rewind Eraser.
-                  </h3>
+                  <h3 className="product-details-title">{product.title}</h3>
+
                   <div className="product-details-review mb-7">
                     <div className="product-review-icon">
-                      <i className="fa fa-star-o"></i>
-                      <i className="fa fa-star-o"></i>
-                      <i className="fa fa-star-o"></i>
-                      <i className="fa fa-star-o"></i>
-                      <i className="fa fa-star-half-o"></i>
+                      {Array(product.rating)
+                        .fill(0)
+                        .map((_, index) => (
+                          <i className="fa fa-star-o" key={index}></i>
+                        ))}
                     </div>
                     <button type="button" className="product-review-show">
                       150 reviews
                     </button>
                   </div>
-                  <p className="mb-7">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Delectus, repellendus. Nam voluptate illo ut quia non
-                    sapiente provident alias quos laborum incidunt, earum
-                    accusamus, natus. Vero pariatur ut veniam sequi amet
-                    consectetur.
-                  </p>
+                  <p className="mb-7">{product.description}</p>
                   <div className="product-details-pro-qty">
                     <div className="pro-qty">
                       <input type="text" title="Quantity" value="1" />
@@ -134,7 +114,7 @@ function ProductDetail() {
                   </div>
 
                   <div className="product-details-action">
-                    <h4 className="price">$254.22</h4>
+                    <h4 className="price">Rs {product.price} </h4>
                     <div className="product-details-cart-wishlist">
                       <button
                         type="button"
@@ -147,7 +127,6 @@ function ProductDetail() {
                       <button
                         type="button"
                         className="btn"
-                        
                         data-bs-toggle="modal"
                         data-bs-target="#action-CartAddModal"
                       >
@@ -190,7 +169,7 @@ function ProductDetail() {
                   <div className="col-6 col-lg-4 col-xl-4 mb-4 mb-sm-8">
                     <div className="product-item product-st3-item">
                       <div className="product-thumb">
-                        <NavLink className="d-block"  to='/productdetail'>
+                        <NavLink className="d-block" to="/productdetail">
                           <img
                             src={product1}
                             width="370"
@@ -278,7 +257,7 @@ function ProductDetail() {
                   <div className="col-6 col-lg-4 col-xl-4 mb-4 mb-sm-8">
                     <div className="product-item product-st3-item">
                       <div className="product-thumb">
-                        <NavLink className="d-block"  to='/productdetail'>
+                        <NavLink className="d-block" to="/productdetail">
                           <img
                             src={product2}
                             width="370"
@@ -364,7 +343,7 @@ function ProductDetail() {
                   <div className="col-6 col-lg-4 col-xl-4 mb-4 mb-sm-8">
                     <div className="product-item product-st3-item">
                       <div className="product-thumb">
-                        <NavLink className="d-block"  to='/productdetail/1'>
+                        <NavLink className="d-block" to="/productdetail/1">
                           <img
                             src={product3}
                             width="370"

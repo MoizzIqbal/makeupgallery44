@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import abouttext from "../assets/images/photos/about-title.webp";
 import aboutbg from "../assets/images/photos/about1.webp";
 import about2 from "../assets/images/photos/about2.webp";
@@ -10,18 +10,36 @@ import brandlogo2 from "../assets/images/brand-logo/2.webp";
 import brandlogo3 from "../assets/images/brand-logo/3.webp";
 import brandlogo4 from "../assets/images/brand-logo/4.webp";
 import { NavLink } from "react-router-dom";
-function ABout() {
-  
-    useEffect(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // or "auto" if you want instant
-      });
-    }, []);
+import { WOW } from "wowjs";
+import CountUp from "react-countup";
+import "animate.css";
+import { motion, useScroll } from "framer-motion";
+function About() {
+  const { scrollYProgress } = useScroll();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // or "auto" if you want instant
+    });
+  }, []);
   return (
     <>
+      <motion.div
+        id="scroll-indicator"
+        style={{
+          scaleX: scrollYProgress,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 10,
+          originX: 0,
+          backgroundColor: "#ff0088",
+        }}
+      />
       <main className="main-content">
-          <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
+        <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
           <div class="container">
             <ol class="breadcrumb justify-content-center">
               <li class="breadcrumb-item">
@@ -36,20 +54,26 @@ function ABout() {
         <section className="page-header-area">
           <div className="container">
             <div className="row align-items-center">
-              <div className="col-md-7 col-lg-7 col-xl-5">
+              <div className="col-md-7 col-lg-7 col-xl-5 wow animate__animated animate__fadeInLeft">
                 <div className="page-header-content">
                   <div className="title-img">
                     <img src={abouttext} alt="Image" />
                   </div>
                   <h2 className="page-header-title">We, are Brancy</h2>
-                  <h4 className="page-header-sub-title">Best cosmetics provider</h4>
+                  <h4 className="page-header-sub-title">
+                    Best cosmetics provider
+                  </h4>
                   <p className="page-header-desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                    aliquam, purus sit amet luctus venenatis.
+                    <i>
+                      "At makegallery, we bring you high-quality makeup products
+                      — from lipsticks to foundations — designed to enhance your
+                      natural beauty. Our mission is to make beauty affordable,
+                      effortless, and accessible for everyone."
+                    </i>
                   </p>
                 </div>
               </div>
-              <div className="col-md-5 col-lg-5 col-xl-7">
+              <div className="col-md-5 col-lg-5 col-xl-7 wow animate__animated animate__fadeInRight">
                 <div className="page-header-thumb">
                   <img src={aboutbg} width="570" height="669" alt="Image" />
                 </div>
@@ -71,7 +95,12 @@ function ABout() {
                       alt="Icon"
                     />
                   </div>
-                  <h2 className="funfact-number">5000+</h2>
+                  <h2 className="funfact-number">
+                    <span class="counter">
+                      <CountUp end={2000} enableScrollSpy />
+                    </span>
+                    <span>+</span>
+                  </h2>
                   <h6 className="funfact-title">Clients</h6>
                 </div>
               </div>
@@ -85,7 +114,12 @@ function ABout() {
                       alt="Icon"
                     />
                   </div>
-                  <h2 className="funfact-number">250+</h2>
+                  <h2 className="funfact-number">
+                    <span class="counter">
+                      <CountUp end={250} enableScrollSpy />
+                    </span>
+                    <span>+</span>
+                  </h2>
                   <h6 className="funfact-title">Projects</h6>
                 </div>
               </div>
@@ -99,7 +133,12 @@ function ABout() {
                       alt="Icon"
                     />
                   </div>
-                  <h2 className="funfact-number">1.5M+</h2>
+                  <h2 className="funfact-number">
+                    <span class="counter">
+                      <CountUp end={100} enableScrollSpy />
+                    </span>
+                    <span>M+</span>
+                  </h2>
                   <h6 className="funfact-title">Revenue</h6>
                 </div>
               </div>
@@ -156,17 +195,13 @@ function ABout() {
             <div className="about-content">
               <h2 className="title">Best Cosmetics Provider</h2>
               <p className="desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel
-                arcu aliquet sem risus nisl. Neque, scelerisque in erat lacus
-                ridiculus habitant porttitor. Malesuada pulvinar sollicitudin
-                enim, quis sapien tellus est. Pellentesque amet vel maecenas
-                nisi. In elementum magna nulla ridiculus sapien mollis volutpat
-                sit. Arcu egestas massa consectetur felis urna porttitor ac.
+                As the best cosmetics provider, <b>makegallery</b> brings you
+                high-quality makeup crafted for every style and occasion. Our
+                mission is to make beauty elegant, effortless, and accessible.
               </p>
             </div>
           </div>
         </section>
-
         <div className="feature-area section-space">
           <div className="container">
             <div className="row mb-n9">
@@ -183,11 +218,12 @@ function ABout() {
                     Support Team
                   </h5>
                   <p className="desc">
-                    Lorem ipsum dolor amet, consectetur adipiscing. Ac tortor
-                    enim metus, turpis.
+                    Our friendly support team is always ready to guide you with
+                    product recommendations and order assistance.
                   </p>
                 </div>
               </div>
+
               <div className="col-md-6 col-lg-4 mb-8">
                 <div className="feature-item">
                   <h5 className="title">
@@ -201,11 +237,12 @@ function ABout() {
                     Certification
                   </h5>
                   <p className="desc">
-                    Lorem ipsum dolor amet, consectetur adipiscing. Ac tortor
-                    enim metus, turpis.
+                    We offer only authentic, certified cosmetics to ensure
+                    safety, quality, and trust in every purchase.
                   </p>
                 </div>
               </div>
+
               <div className="col-md-6 col-lg-4 mb-8">
                 <div className="feature-item">
                   <h5 className="title">
@@ -219,8 +256,8 @@ function ABout() {
                     Natural Products
                   </h5>
                   <p className="desc">
-                    Lorem ipsum dolor amet, consectetur adipiscing. Ac tortor
-                    enim metus, turpis.
+                    Explore a wide range of natural and skin-friendly products
+                    made to enhance your beauty, naturally.
                   </p>
                 </div>
               </div>
@@ -232,4 +269,4 @@ function ABout() {
   );
 }
 
-export default ABout;
+export default About;

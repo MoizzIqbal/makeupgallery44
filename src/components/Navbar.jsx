@@ -70,7 +70,7 @@ function Navbar() {
               </div>
               <div className="col-7 col-lg-3 col-xl-4">
                 <div className="header-action justify-content-end">
-                  <button
+                  {/* <button
                     className="header-action-btn ms-0"
                     type="button"
                     data-bs-toggle="offcanvas"
@@ -80,11 +80,11 @@ function Navbar() {
                     <span className="icon">
                       <FaMagnifyingGlass />
                     </span>
-                  </button>
+                  </button> */}
                   <NavLink to="/cart">
                     <button className="header-action-btn">
                       <span className="icon">
-                        <FaShoppingCart />
+                        <FaShoppingCart color="pink" />
                       </span>
                     </button>
                   </NavLink>
@@ -149,7 +149,7 @@ function Navbar() {
             </div>
           </div>
         </aside>
-
+{/* 
         <aside
           className="product-action-modal modal fade"
           id="action-CartAddModal"
@@ -188,7 +188,7 @@ function Navbar() {
               </div>
             </div>
           </div>
-        </aside>
+        </aside> */}
 
         <aside
           className="aside-search-box-wrapper offcanvas offcanvas-top"
@@ -236,7 +236,7 @@ function Navbar() {
           </div>
         </aside>
 
-        <aside
+        {/* <aside
           className="product-cart-view-modal modal fade"
           id="action-QuickViewModal"
           tabIndex="-1"
@@ -321,9 +321,9 @@ function Navbar() {
               </div>
             </div>
           </div>
-        </aside>
+        </aside> */}
 
-        <aside
+        {/* <aside
           className="off-canvas-wrapper offcanvas offcanvas-start"
           tabIndex="-1"
           id="AsideOffcanvasMenu"
@@ -393,7 +393,7 @@ function Navbar() {
               </ul>
             </div>
           </div>
-        </aside>
+        </aside> */}
       </div>
     </>
   );

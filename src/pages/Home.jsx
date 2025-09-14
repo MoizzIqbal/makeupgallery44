@@ -1,4 +1,6 @@
-import React, {useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import WOW from "wowjs";
+import "animate.css";
 import texttheme from "../assets/images/slider/text-theme.webp";
 import text1 from "../assets/images/slider/text1.webp";
 import slider1 from "../assets/images/slider/slider1.webp";
@@ -15,17 +17,67 @@ import banner2 from "../assets/images/shop/banner/2.webp";
 import banner3 from "../assets/images/shop/banner/3.webp";
 import products from "../Data/ProductsArray";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
+import { allproducts } from "../utils/allproducts";
+console.log(allproducts);
 
 function Home() {
-  
-    useEffect(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // or "auto" if you want instant
-      });
-    }, []);
+  const [cartItem, setCartItem] = useState(null);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // or "auto" if you want instant
+    });
+  }, []);
+
+  const addtocart = (namee) => {
+    console.log(namee);
+    setCartItem(namee);
+  };
   return (
     <>
+      <aside
+        className="product-action-modal modal fade"
+        id="action-CartAddModal"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-body">
+              <div className="product-action-view-content">
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                >
+                  <i className="fa fa-times"></i>
+                </button>
+                <div className="modal-action-messages">
+                  <i className="fa fa-check-square-o"></i> Added to cart
+                  successfully!
+                </div>
+                {cartItem && (
+                  <div className="modal-action-product">
+                    <div className="thumb">
+                      <img
+                        src={cartItem.image}
+                        alt={cartItem.title}
+                        width="466"
+                        height="200"
+                        style={{ objectFit: "contain", height: "200px" }}
+                      />
+                    </div>
+                    <h4 className="product-name">
+                      <a>{cartItem.title}</a>
+                    </h4>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
       <main className="main-content">
         <section className="hero-slider-area position-relative">
           <div className="swiper hero-slider-container">
@@ -33,7 +85,7 @@ function Home() {
               <div className="swiper-slide hero-slide-item">
                 <div className="container">
                   <div className="row align-items-center position-relative">
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-md-6 ">
                       <div className="hero-slide-content">
                         <div className="hero-slide-text-img">
                           <img
@@ -43,10 +95,22 @@ function Home() {
                             alt="Image"
                           />
                         </div>
-                        <h2 className="hero-slide-title">CLEAN FRESH</h2>
-                        <p className="hero-slide-desc">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit ut aliquam, purus sit amet luctus venenatis.
+                        {/* <motion.h2
+  className="hero-slide-title"
+  initial={{ opacity: 0, y: 50 }}   // hidden + neeche
+  animate={{ opacity: 1, y: 0 }}    // visible + normal
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  CLEAN FRESH
+</motion.h2> */}
+                        <h1 className="hero-slide-title wow animate__animated animate__fadeInDown">
+                          CLEAN FRESH
+                        </h1>
+                        <p className="hero-slide-desc ">
+                          <i>
+                            Experience luxury makeup crafted for elegance,
+                            radiance, and timeless beauty.
+                          </i>
                         </p>
                         <NavLink className="btn btn-border-dark" to="/products">
                           BUY NOW
@@ -78,7 +142,11 @@ function Home() {
             <a href="" target="_blank" rel="noopener">
               <i className="fa fa-whatsapp"></i>
             </a>
-            <a href="https://www.instagram.com/makeupgallery.44?igsh=eTBrZzFicnF0YWFs2" target="_blank" rel="noopener">
+            <a
+              href="https://www.instagram.com/makeupgallery.44?igsh=eTBrZzFicnF0YWFs2"
+              target="_blank"
+              rel="noopener"
+            >
               <i className="fa fa-instagram"></i>
             </a>
             <a href="" target="_blank" rel="noopener">
@@ -87,9 +155,9 @@ function Home() {
           </div>
         </section>
 
-        <section className="section-space pb-0">
+        <section className="section-space pb-0 ">
           <div className="container">
-            <div className="row g-3 g-sm-6">
+            <div className="row g-3 g-sm-6 wow animate__animated animate__fadeInDown">
               <div className="col-6 col-lg-4 col-lg-2 col-xl-2">
                 <a href="" className="product-category-item">
                   <img
@@ -199,14 +267,17 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className="row mb-n4 mb-sm-n10 g-3 g-sm-6">
-              {products.map((item, index) => (
+            <div className="row mb-n4 mb-sm-n10 g-3 g-sm-6 wow animate__animated animate__fadeInUp">
+              {allproducts.slice(0, 6).map((item, index) => (
                 <div className="col-6 col-lg-4 mb-4 mb-sm-9" key={index}>
                   <div className="product-item">
                     <div className="product-thumb">
-                      <NavLink className="d-block"to={`/productdetail/${item.id}`}>
+                      <NavLink
+                        className="d-block"
+                        to={`/productdetail/${item.slug}`}
+                      >
                         <img
-                          src={item.img}
+                          src={item.image}
                           width="400"
                           height="450"
                           alt="Image-HasTech"
@@ -214,46 +285,51 @@ function Home() {
                       </NavLink>
 
                       <div className="product-action">
-                        <button
+                        {/* <button
                           type="button"
                           className="product-action-btn action-btn-quick-view"
                           data-bs-toggle="modal"
                           data-bs-target="#action-QuickViewModal"
                         >
                           <i className="fa fa-expand"></i>
-                        </button>
+                        </button> */}
                         <button
                           type="button"
                           className="product-action-btn action-btn-cart"
                           data-bs-toggle="modal"
                           data-bs-target="#action-CartAddModal"
+                          onClick={() => addtocart(item)}
                         >
                           <span>Add to cart</span>
                         </button>
-                        <button
+                        {/* <button
                           type="button"
                           className="product-action-btn action-btn-wishlist"
                           data-bs-toggle="modal"
                           data-bs-target="#action-WishlistModal"
                         >
                           <i className="fa fa-heart-o"></i>
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                     <div className="product-info">
                       <div className="product-rating">
                         <div className="rating">
-                          {Array(item.rating)
-                            .fill(0)
-                            .map((_, index) => (
-                              <i className="fa fa-star-o" key={index}></i>
-                            ))}
+                          {item.rating && item.rating > 0 ? (
+                            Array(item.rating)
+                              .fill(0)
+                              .map((_, index) => (
+                                <i className="fa fa-star-o" key={index}></i>
+                              ))
+                          ) : (
+                            <span>No rating</span>
+                          )}
                         </div>
                         <div className="reviews">{item.reviews} reviews</div>
                       </div>
                       <h4 className="title">
                         <NavLink to={`/productdetail/${item.id}`}>
-                          {item.name}
+                          {item.title}
                         </NavLink>
                       </h4>
                       <div className="prices">
@@ -298,7 +374,7 @@ function Home() {
           <div className="container">
             <div className="row">
               <div className="col-sm-6 col-lg-4">
-                <a  className="product-banner-item">
+                <a className="product-banner-item">
                   <img
                     src={banner1}
                     width="400"
@@ -308,7 +384,7 @@ function Home() {
                 </a>
               </div>
               <div className="col-sm-6 col-lg-4 mt-sm-0 mt-6">
-                <a  className="product-banner-item">
+                <a className="product-banner-item">
                   <img
                     src={banner2}
                     width="400"
@@ -318,7 +394,7 @@ function Home() {
                 </a>
               </div>
               <div className="col-sm-6 col-lg-4 mt-lg-0 mt-6">
-                <a  className="product-banner-item">
+                <a className="product-banner-item">
                   <img
                     src={banner3}
                     width="400"
