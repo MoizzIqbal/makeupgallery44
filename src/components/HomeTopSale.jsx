@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 import { allproducts } from "../utils/allproducts";
 import { NavLink } from 'react-router-dom';
+import useCartStore from '../cartstore';
 function HomeTopSale() {
+    const addToCart = useCartStore((state) => state.addToCart);
     const [cartItem, setCartItem] = useState(null);
-      const addtocart = (namee) => {
+     const addtocart = (namee) => {
     console.log(namee);
     setCartItem(namee);
+    addToCart(namee)
   };
   return (
     <>
@@ -134,7 +137,7 @@ function HomeTopSale() {
                       </div>
                     </div>
                     <div className="product-action-bottom">
-                      <button
+                      {/* <button
                         type="button"
                         className="product-action-btn action-btn-quick-view"
                         data-bs-toggle="modal"
@@ -149,12 +152,13 @@ function HomeTopSale() {
                         data-bs-target="#action-WishlistModal"
                       >
                         <i className="fa fa-heart-o"></i>
-                      </button>
+                      </button> */}
                       <button
                         type="button"
                         className="product-action-btn action-btn-cart"
-                        data-bs-toggle="modal"
-                        data-bs-target="#action-CartAddModal"
+                           data-bs-toggle="modal"
+                          data-bs-target="#action-CartAddModal"
+                          onClick={() => addtocart(item)}
                       >
                         <span>Add to cart</span>
                       </button>

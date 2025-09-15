@@ -4,9 +4,11 @@ import products from "../Data/ProductsArray";
 import { NavLink } from "react-router-dom";
 import { Pagination } from "@mantine/core";
 import { allproducts } from "../utils/allproducts";
+import useCartStore from "../cartstore";
 console.log(allproducts);
 
 function Products() {
+  const addToCart = useCartStore((state) => state.addToCart);
   const [search, setSearch] = useState("");
   const [starfilter, setStarFilter] = useState('')
   const [filterProducts, setFilterProducts] = useState(allproducts);
@@ -47,7 +49,9 @@ function Products() {
   const addtocart = (namee) => {
     console.log(namee);
     setCartItem(namee);
+    addToCart(namee)
   };
+   
   return (
     <>
       <aside

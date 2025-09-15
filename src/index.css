@@ -7484,3 +7484,19 @@ hr {
     -webkit-tap-highlight-color: transparent;
 }
 
+.cart-badge {
+  position: absolute;
+  top: 22px;
+  right: 88px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

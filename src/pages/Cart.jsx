@@ -1,6 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import useCartStore from "../cartstore";
+import { RxCross2 } from "react-icons/rx";
+import { FaPlus } from "react-icons/fa6";
+import { FaMinus } from "react-icons/fa6";
 function Cart() {
+  const { cart, removeFromCart, increaseQty, decreaseQty, cartTotal } =
+    useCartStore();
+
+  console.log(cart);
+
   return (
     <>
       <main className="main-content">
@@ -20,7 +29,7 @@ function Cart() {
         <section className="section-space">
           <div className="container">
             <div className="shopping-cart-form table-responsive">
-              <form action="#" method="post">
+              <form>
                 <table className="table text-center">
                   <thead>
                     <tr>
@@ -33,130 +42,85 @@ function Cart() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="tbody-item">
-                      <td className="product-remove">
-                        <a className="remove">×</a>
-                      </td>
-                      <td className="product-thumbnail">
-                        <div className="thumb">
-                          <a>
-                            <img
-                              src="assets/images/shop/cart1.webp"
-                              width="68"
-                              height="84"
-                              alt="Image-HasTech"
-                            />
-                          </a>
-                        </div>
-                      </td>
-                      <td className="product-name">
-                        <a className="title">
-                          Condimentum posuere consectetur urna
-                        </a>
-                      </td>
-                      <td className="product-price">
-                        <span className="price">$115.00</span>
-                      </td>
-                      <td className="product-quantity">
-                        <div className="pro-qty">
-                          <input
-                            type="text"
-                            className="quantity"
-                            title="Quantity"
-                            value="1"
-                          />
-                          <div className="dec qty-btn">-</div>
-                          <div className="inc qty-btn">+</div>
-                        </div>
-                      </td>
-                      <td className="product-subtotal">
-                        <span className="price">$115.00</span>
-                      </td>
-                    </tr>
-                    <tr className="tbody-item">
-                      <td className="product-remove">
-                        <a className="remove">×</a>
-                      </td>
-                      <td className="product-thumbnail">
-                        <div className="thumb">
-                          <a>
-                            <img
-                              src="assets/images/shop/cart2.webp"
-                              width="68"
-                              height="84"
-                              alt="Image-HasTech"
-                            />
-                          </a>
-                        </div>
-                      </td>
-                      <td className="product-name">
-                        <a className="title">
-                          Kaoreet lobortis sagittis laoreet
-                        </a>
-                      </td>
-                      <td className="product-price">
-                        <span className="price">$95.00</span>
-                      </td>
-                      <td className="product-quantity">
-                        <div className="pro-qty">
-                          <input
-                            type="text"
-                            className="quantity"
-                            title="Quantity"
-                            value="1"
-                          />
-                          <div className="dec qty-btn">-</div>
-                          <div className="inc qty-btn">+</div>
-                        </div>
-                      </td>
-                      <td className="product-subtotal">
-                        <span className="price">$95.00</span>
-                      </td>
-                    </tr>
-                    <tr className="tbody-item">
-                      <td className="product-remove">
-                        <a className="remove">×</a>
-                      </td>
-                      <td className="product-thumbnail">
-                        <div className="thumb">
-                          <a>
-                            <img
-                              src="assets/images/shop/cart3.webp"
-                              width="68"
-                              height="84"
-                              alt="Image-HasTech"
-                            />
-                          </a>
-                        </div>
-                      </td>
-                      <td className="product-name">
-                        <a className="title">
-                          Nostrum exercitationem itae ipsum
-                        </a>
-                      </td>
-                      <td className="product-price">
-                        <span className="price">$79.00</span>
-                      </td>
-                      <td className="product-quantity">
-                        <div className="pro-qty">
-                          <input
-                            type="text"
-                            className="quantity"
-                            title="Quantity"
-                            value="1"
-                          />
-                          <div className="dec qty-btn">-</div>
-                          <div className="inc qty-btn">+</div>
-                        </div>
-                      </td>
-                      <td className="product-subtotal">
-                        <span className="price">$79.00</span>
-                      </td>
-                    </tr>
+                    {cart.length === 0 ? (
+                      <tr>
+                        <td colSpan="6" className="text-center py-5">
+                          <p>Your cart is empty</p>
+                          <NavLink
+                            to="/products"
+                            className="bg-blue-500  px-4 py-2 mt-3 inline-block rounded hover:bg-blue-600"
+                          >
+                            ← Go back to shopping
+                          </NavLink>
+                        </td>
+                      </tr>
+                    ) : (
+                      cart.map((item) => (
+                        <tr className="tbody-item" key={item.id}>
+                          <td className="product-remove">
+                            <a
+                              className="remove"
+                              onClick={() => removeFromCart(item.id)}
+                            >
+                             <RxCross2 />
+                            </a>
+                          </td>
+                          <td className="product-thumbnail">
+                            <div className="thumb">
+                              <img
+                                src={
+                                  item.image || "assets/images/shop/cart1.webp"
+                                }
+                                width="68"
+                                height="84"
+                                alt={item.title}
+                              />
+                            </div>
+                          </td>
+                          <td className="product-name">
+                            <span className="title">{item.title}</span>
+                          </td>
+                          <td className="product-price">
+                            <span className="price">Rs {item.price}</span>
+                          </td>
+                          <td className="product-quantity">
+                            <div className="pro-qty flex items-center justify-center gap-2">
+                              <div
+                              
+                                className="dec qty-btn"
+                                onClick={() => decreaseQty(item.id)}
+                              >
+                                <FaMinus size={15} />
+                              </div>
+                              <input
+                                type="text"
+                                className="quantity"
+                                value={item.qty}
+                                readOnly
+                              />
+                              <div
+                                
+                                className="inc qty-btn"
+                                onClick={() => increaseQty(item.id)}
+                              >
+                                <FaPlus size={15} />
+                              </div>
+                            </div>
+                          </td>
+                          <td className="product-subtotal">
+                            <span className="price">
+                              Rs {item.price * item.qty}
+                            </span>
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </form>
             </div>
+
+            {/* Cart Totals */}
             <div className="row">
               <div className="col-12 col-lg-12">
                 <div className="cart-totals-wrap">
@@ -166,7 +130,7 @@ function Cart() {
                       <tr className="cart-subtotal">
                         <th>Subtotal</th>
                         <td>
-                          <span className="amount">$499.00</span>
+                          <span className="amount">Rs {cartTotal()}</span>
                         </td>
                       </tr>
                       <tr className="shipping-totals">
@@ -174,35 +138,23 @@ function Cart() {
                         <td>
                           <ul className="shipping-list">
                             <li className="radio">
-                              <input
-                                type="radio"
-                                name="shipping"
-                                id="radio1"
-                                checked
-                              />
-                              <label for="radio1">
-                                Flat rate: <span>$3.00</span>
+                             
+                              <label htmlFor="radio1">
+                                Shipping Charges: <span>Rs 300</span>
                               </label>
                             </li>
-                            <li className="radio">
-                              <input type="radio" name="shipping" id="radio2" />
-                              <label for="radio2">Free shipping</label>
-                            </li>
-                            <li className="radio">
-                              <input type="radio" name="shipping" id="radio3" />
-                              <label for="radio3">Local pickup</label>
-                            </li>
+                         
                           </ul>
-                          <p className="destination">
-                            Shipping to <strong>USA</strong>.
-                          </p>
-                          <a className="btn-shipping-address">Change address</a>
+                          {/* <p className="destination">
+                            Shipping to <strong>Pakistan</strong>.
+                          </p> */}
+                         
                         </td>
                       </tr>
                       <tr className="order-total">
                         <th>Total</th>
                         <td>
-                          <span className="amount">$504.00</span>
+                          <span className="amount">Rs {cartTotal() + 300}</span>
                         </td>
                       </tr>
                     </tbody>

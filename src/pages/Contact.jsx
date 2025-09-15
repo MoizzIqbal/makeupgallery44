@@ -167,7 +167,7 @@ function Contact() {
           ></div>
         </section>
 
-        <section className="section-space">
+        <section className="section-space" data-aos='fade-up'>
           <div className="container">
             <div className="contact-info">
               <div className="contact-info-item">
