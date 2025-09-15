@@ -69,7 +69,7 @@ function Contact() {
         <section className="contact-area">
           <div className="container">
             <div className="row">
-              <div className="offset-lg-6 col-lg-6 wow animate__animated animate__fadeInRight">
+              <div className="offset-lg-6 col-lg-6" data-aos='fade-left'>
                 <div className="section-title position-relative">
                   <h2 className="title">Get in touch</h2>
                   <p className="m-0">
@@ -161,8 +161,9 @@ function Contact() {
             </div>
           </div>
           <div
-            className="contact-left-img wow animate__animated animate__fadeInLeft"
+            className="contact-left-img "
             style={{ backgroundImage: `url(${contactimg})` }}
+            data-aos='fade-right'
           ></div>
         </section>
 

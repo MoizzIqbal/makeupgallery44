@@ -7,7 +7,7 @@ function PagenotFound() {
       <main className="main-content mt-5">
         <section className="page-not-found-area">
           <div className="container">
-            <div className="page-not-found">
+            <div className="page-not-found" data-aos='fade-down'>
               <img src={notfound} width="550" height="538" alt="Image" />
               <h3 className="title">Opps! You Lost</h3>
               <h5 className="back-btn">

@@ -1,10 +1,7 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "react-scroll-to-top";
-import WOW from 'wowjs';
-import 'animate.css';
 import { IoIosArrowUp } from "react-icons/io";
-import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import Home from "./pages/Home";
@@ -20,14 +17,15 @@ import ProductCheckout from "./pages/ProductCheckout.jsx";
 import Cart from "./pages/Cart.jsx";
 import OrderConfirmation from "./pages/OrderConfirmation.jsx";
 import Blogs from "./pages/Blogs.jsx";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function App() {
    useEffect(() => {
-    new WOW.WOW({
-      live: false, // Disable live updates (improves performance)
-    }).init();
+    AOS.init({
+      duration: 1000, // Animation duration in ms
+      once: true,     // Whether animation should happen only once
+    });
   }, []);
-
   return (
     <>
       <Router>

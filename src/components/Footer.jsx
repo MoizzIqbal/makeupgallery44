@@ -12,20 +12,19 @@ function Footer() {
         <div className="footer-main">
           <div className="container">
             <div className="row">
-              <div className="col-md-6 col-lg-4">
+              <div className="col-md-6 col-lg-4" data-aos='fade-right'>
                 <div className="widget-item">
                   <div className="widget-about">
                     <NavLink className="widget-logo" to="/">
                       <img src={logo} width="95" height="68" alt="Logo" />
                     </NavLink>
                     <p className="desc">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been.
+                     MakeupGallery – Your destination for beauty, elegance, and confidence.
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-5 mt-md-0 mt-9">
+              <div className="col-md-6 col-lg-5 mt-md-0 mt-9" data-aos='fade-up'>
                 <div className="widget-item">
                   <h4 className="widget-title">Information</h4>
                   <ul className="widget-nav">
@@ -52,7 +51,7 @@ function Footer() {
                   </ul>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-3 mt-lg-0 mt-6">
+              <div className="col-md-6 col-lg-3 mt-lg-0 mt-6" data-aos='fade-left'>
                 <div className="widget-item">
                   <h4 className="widget-title">Social Info</h4>
                   <div className="widget-social">

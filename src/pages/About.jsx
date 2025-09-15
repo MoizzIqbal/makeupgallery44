@@ -10,9 +10,7 @@ import brandlogo2 from "../assets/images/brand-logo/2.webp";
 import brandlogo3 from "../assets/images/brand-logo/3.webp";
 import brandlogo4 from "../assets/images/brand-logo/4.webp";
 import { NavLink } from "react-router-dom";
-import { WOW } from "wowjs";
 import CountUp from "react-countup";
-import "animate.css";
 import { motion, useScroll } from "framer-motion";
 function About() {
   const { scrollYProgress } = useScroll();
@@ -54,7 +52,7 @@ function About() {
         <section className="page-header-area">
           <div className="container">
             <div className="row align-items-center">
-              <div className="col-md-7 col-lg-7 col-xl-5 wow animate__animated animate__fadeInLeft">
+              <div className="col-md-7 col-lg-7 col-xl-5" data-aos='fade-right'>
                 <div className="page-header-content">
                   <div className="title-img">
                     <img src={abouttext} alt="Image" />
@@ -73,7 +71,7 @@ function About() {
                   </p>
                 </div>
               </div>
-              <div className="col-md-5 col-lg-5 col-xl-7 wow animate__animated animate__fadeInRight">
+              <div className="col-md-5 col-lg-5 col-xl-7" data-aos='fade-left'>
                 <div className="page-header-thumb">
                   <img src={aboutbg} width="570" height="669" alt="Image" />
                 </div>
@@ -84,7 +82,7 @@ function About() {
 
         <section className="funfact-area section-space">
           <div className="container">
-            <div className="row mb-n6">
+            <div className="row mb-n6" data-aos='fade-up'>
               <div className="col-sm-6 col-lg-4 mb-6">
                 <div className="funfact-item">
                   <div className="icon">
@@ -193,9 +191,9 @@ function About() {
               <img src={about2} alt="Image" />
             </div>
             <div className="about-content">
-              <h2 className="title">Best Cosmetics Provider</h2>
-              <p className="desc">
-                As the best cosmetics provider, <b>makegallery</b> brings you
+              <h2 className="title" data-aos='fade-up'>Best Cosmetics Provider</h2>
+              <p className="desc" data-aos='fade-up'>
+                As the best cosmetics provider, makegallery brings you
                 high-quality makeup crafted for every style and occasion. Our
                 mission is to make beauty elegant, effortless, and accessible.
               </p>
@@ -204,7 +202,7 @@ function About() {
         </section>
         <div className="feature-area section-space">
           <div className="container">
-            <div className="row mb-n9">
+            <div className="row mb-n9" data-aos='fade-up'>
               <div className="col-md-6 col-lg-4 mb-8">
                 <div className="feature-item">
                   <h5 className="title">
