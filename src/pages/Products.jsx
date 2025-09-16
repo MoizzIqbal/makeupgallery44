@@ -5,12 +5,13 @@ import { NavLink } from "react-router-dom";
 import { Pagination } from "@mantine/core";
 import { allproducts } from "../utils/allproducts";
 import useCartStore from "../cartstore";
+import { FaStar } from "react-icons/fa6";
 console.log(allproducts);
 
 function Products() {
   const addToCart = useCartStore((state) => state.addToCart);
   const [search, setSearch] = useState("");
-  const [starfilter, setStarFilter] = useState('')
+  const [starfilter, setStarFilter] = useState("");
   const [filterProducts, setFilterProducts] = useState(allproducts);
   const [cartItem, setCartItem] = useState(null);
   // ----------matnain pagination-----------
@@ -49,9 +50,9 @@ function Products() {
   const addtocart = (namee) => {
     console.log(namee);
     setCartItem(namee);
-    addToCart(namee)
+    addToCart(namee);
   };
-   
+
   return (
     <>
       <aside
@@ -183,7 +184,7 @@ function Products() {
                               data-bs-target="#action-CartAddModal"
                               onClick={() => addtocart(item)}
                             >
-                              <span>Adddd to cart</span>
+                              <span>Add to cart</span>
                             </button>
                             {/* <button
                               type="button"
@@ -202,7 +203,8 @@ function Products() {
                                 Array(item.rating)
                                   .fill(0)
                                   .map((_, index) => (
-                                    <i className="fa fa-star-o" key={index}></i>
+                                  
+                                      <FaStar  key={index}/>
                                   ))
                               ) : (
                                 <span>no rating</span>
@@ -245,7 +247,7 @@ function Products() {
                             data-bs-target="#action-CartAddModal"
                             onClick={() => addtocart(item)}
                           >
-                            <span>Add to carttt</span>
+                            <span>Add to cart</span>
                           </button>
                         </div>
                       </div>
@@ -298,11 +300,11 @@ function Products() {
                           name="rating"
                           value="5"
                         />{" "}
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
                       </li>
                       <li>
                         <input
@@ -311,10 +313,10 @@ function Products() {
                           name="rating"
                           value="4"
                         />{" "}
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
                       </li>
                       <li>
                         <input
@@ -323,9 +325,9 @@ function Products() {
                           name="rating"
                           value="4"
                         />{" "}
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
                       </li>
                       <li>
                         <input
@@ -334,8 +336,8 @@ function Products() {
                           name="rating"
                           value="2"
                         />{" "}
-                        <i className="fa fa-star-o"></i>
-                        <i className="fa fa-star-o"></i>
+                        <FaStar />
+                        <FaStar />
                       </li>
                       <li>
                         <input
@@ -344,7 +346,7 @@ function Products() {
                           name="rating"
                           value="1"
                         />{" "}
-                        <i className="fa fa-star-o"></i>
+                        <FaStar />
                       </li>
                     </ul>
                   </div>

@@ -37,13 +37,13 @@ function About() {
         }}
       />
       <main className="main-content">
-        <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
-          <div class="container">
-            <ol class="breadcrumb justify-content-center">
-              <li class="breadcrumb-item">
+        <nav aria-label="breadcrumb" className="breadcrumb-style1 mb-10">
+          <div className="container">
+            <ol className="breadcrumb justify-content-center">
+              <li className="breadcrumb-item">
                 <NavLink to="/">Home</NavLink>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li className="breadcrumb-item active" aria-current="page">
                 About Us
               </li>
             </ol>
@@ -94,7 +94,7 @@ function About() {
                     />
                   </div>
                   <h2 className="funfact-number">
-                    <span class="counter">
+                    <span className="counter">
                       <CountUp end={2000} enableScrollSpy />
                     </span>
                     <span>+</span>
@@ -113,7 +113,7 @@ function About() {
                     />
                   </div>
                   <h2 className="funfact-number">
-                    <span class="counter">
+                    <span className="counter">
                       <CountUp end={250} enableScrollSpy />
                     </span>
                     <span>+</span>
@@ -132,7 +132,7 @@ function About() {
                     />
                   </div>
                   <h2 className="funfact-number">
-                    <span class="counter">
+                    <span className="counter">
                       <CountUp end={100} enableScrollSpy />
                     </span>
                     <span>M+</span>

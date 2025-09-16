@@ -147,16 +147,16 @@ function Cart() {
                           </ul>
                           {/* <p className="destination">
                             Shipping to <strong>Pakistan</strong>.
-                          </p> */}
-                         
+                          </p>
+                          */}
                         </td>
                       </tr>
-                      <tr className="order-total">
+                      {/* <tr className="order-total">
                         <th>Total</th>
                         <td>
-                          <span className="amount">Rs {cartTotal() + 300}</span>
+                          <span className="amount">Rs {cartTotal()}</span>
                         </td>
-                      </tr>
+                      </tr> */}
                     </tbody>
                   </table>
                   <div className="text-end">

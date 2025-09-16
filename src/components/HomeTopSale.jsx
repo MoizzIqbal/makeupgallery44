@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { allproducts } from "../utils/allproducts";
 import { NavLink } from 'react-router-dom';
 import useCartStore from '../cartstore';
+import { FaStar } from "react-icons/fa6";
 function HomeTopSale() {
     const addToCart = useCartStore((state) => state.addToCart);
     const [cartItem, setCartItem] = useState(null);
@@ -118,7 +119,8 @@ function HomeTopSale() {
                             Array(item.rating)
                               .fill(0)
                               .map((_, index) => (
-                                <i className="fa fa-star-o" key={index}></i>
+                                // <i className="fa fa-star-o" key={index}></i>
+                                <FaStar key={index}/>
                               ))
                           ) : (
                             <span>No rating</span>

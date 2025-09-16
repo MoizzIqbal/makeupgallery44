@@ -1,14 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import productdetailimg from "../assets/images/shop/product-details/2.webp";
 import productbanner from "../assets/images/shop/banner/7.webp";
 import product1 from "../assets/images/shop/1.webp";
 import product2 from "../assets/images/shop/2.webp";
 import product3 from "../assets/images/shop/3.webp";
+import { FaStar } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa6";
+import { FaMinus } from "react-icons/fa6";
 import { NavLink, useParams } from "react-router-dom";
 import "@mantine/carousel/styles.css";
 import { Carousel } from "@mantine/carousel";
 import { allproducts } from "../utils/allproducts";
+import useCartStore from "../cartstore";
 function ProductDetail() {
+  const { increaseQty, decreaseQty, addToCart, cart } = useCartStore();
+  const [cartItem, setCartItem] = useState(null);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -18,10 +25,61 @@ function ProductDetail() {
 
   const { slug } = useParams();
   const product = allproducts.find((item) => item.slug === slug);
+
+  // find if product is already in cart
+  const cartProduct = cart.find((item) => item.id === product.id);
   console.log(product);
 
+  const addtocart = (namee) => {
+    console.log(namee);
+    setCartItem(namee);
+    addToCart(namee);
+  };
   return (
     <>
+      <aside
+        className="product-action-modal modal fade"
+        id="action-CartAddModal"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-body">
+              <div className="product-action-view-content">
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                >
+                  <i className="fa fa-times"></i>
+                </button>
+                <div className="modal-action-messages">
+                  <i className="fa fa-check-square-o"></i> Added to cart
+                  successfully!
+                </div>
+                {cartItem && (
+                  <div className="modal-action-product">
+                    <div className="thumb">
+                      <img
+                        src={cartItem.image}
+                        alt={cartItem.title}
+                        width="466"
+                        height="200"
+                        style={{ objectFit: "contain", height: "200px" }}
+                      />
+                    </div>
+                    <h4 className="product-name">
+                      <a>{cartItem.title}</a>
+                    </h4>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
       <main className="main-content">
         <section
           className="page-header-area pt-10 pb-9"
@@ -33,9 +91,9 @@ function ProductDetail() {
                 <div className="page-header-st3-content text-center text-md-start">
                   <ol className="breadcrumb justify-content-center justify-content-md-start">
                     <li className="breadcrumb-item">
-                      <a className="text-dark" href="index.html">
+                      <NavLink to="/" className="text-dark">
                         Home
-                      </a>
+                      </NavLink>
                     </li>
                     <li
                       className="breadcrumb-item active text-dark"
@@ -69,7 +127,7 @@ function ProductDetail() {
                   /> */}
                   <Carousel withIndicators height={500}>
                     {product.detailImages.map((img, index) => (
-                      <Carousel.Slide>
+                      <Carousel.Slide key={index}>
                         {" "}
                         <img
                           src={img}
@@ -88,7 +146,7 @@ function ProductDetail() {
               <div className="col-lg-6">
                 <div className="product-details-content">
                   <h5 className="product-details-collection">
-                 <strong>Brand Name:</strong>   {product.brand}
+                    <strong>Brand Name:</strong> {product.brand}
                   </h5>
                   <h3 className="product-details-title">{product.title}</h3>
 
@@ -97,7 +155,8 @@ function ProductDetail() {
                       {Array(product.rating)
                         .fill(0)
                         .map((_, index) => (
-                          <i className="fa fa-star-o" key={index}></i>
+                          // <i className="fa fa-star-o" key={index}></i>
+                          <FaStar  key={index}/>
                         ))}
                     </div>
                     <button type="button" className="product-review-show">
@@ -107,28 +166,54 @@ function ProductDetail() {
                   <p className="mb-7">{product.description}</p>
                   <div className="product-details-pro-qty">
                     <div className="pro-qty">
-                      <input type="text" title="Quantity" value="1" />
-                      <div className="dec qty-btn">-</div>
-                      <div className="inc qty-btn">+</div>
+                      <input
+                        type="text"
+                        title="Quantity"
+                        value={cartProduct ? cartProduct.qty : 1}
+                        readOnly
+                      />
+                      <div
+                        className="dec qty-btn"
+                        onClick={
+                          () =>
+                            cartProduct
+                              ? decreaseQty(product.id) // if in cart, decrease
+                              : null // do nothing if not in cart
+                        }
+                      >
+                        <FaMinus size={15} />
+                      </div>
+                      <div
+                        className="inc qty-btn"
+                        onClick={
+                          () =>
+                            cartProduct
+                              ? increaseQty(product.id) // if in cart, increase
+                              : addtocart(product) // if not in cart, add first
+                        }
+                      >
+                        <FaPlus size={15} />
+                      </div>
                     </div>
                   </div>
 
                   <div className="product-details-action">
                     <h4 className="price">Rs {product.price} </h4>
                     <div className="product-details-cart-wishlist">
-                      <button
+                      {/* <button
                         type="button"
                         className="btn-wishlist"
                         data-bs-toggle="modal"
                         data-bs-target="#action-WishlistModal"
                       >
                         <i className="fa fa-heart-o"></i>
-                      </button>
+                      </button> */}
                       <button
                         type="button"
                         className="btn"
                         data-bs-toggle="modal"
                         data-bs-target="#action-CartAddModal"
+                        onClick={() => addtocart(product)}
                       >
                         Add to cart
                       </button>
@@ -177,7 +262,7 @@ function ProductDetail() {
                             alt="Image-HasTech"
                           />
                         </NavLink>
-                        {/* <span className="flag-new">new</span> */}
+                        <span className="flag-new">new</span>
                         <div className="product-action">
                           <button
                             type="button"
@@ -208,11 +293,10 @@ function ProductDetail() {
                       <div className="product-info">
                         <div className="product-rating">
                           <div className="rating">
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-half-o"></i>
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                           
                           </div>
                           <div className="reviews">150 reviews</div>
                         </div>
@@ -227,22 +311,22 @@ function ProductDetail() {
                         </div>
                       </div>
                       <div className="product-action-bottom">
-                        <button
+                        {/* <button
                           type="button"
                           className="product-action-btn action-btn-quick-view"
                           data-bs-toggle="modal"
                           data-bs-target="#action-QuickViewModal"
                         >
                           <i className="fa fa-expand"></i>
-                        </button>
-                        <button
+                        </button> */}
+                        {/* <button
                           type="button"
                           className="product-action-btn action-btn-wishlist"
                           data-bs-toggle="modal"
                           data-bs-target="#action-WishlistModal"
                         >
                           <i className="fa fa-heart-o"></i>
-                        </button>
+                        </button> */}
                         <button
                           type="button"
                           className="product-action-btn action-btn-cart"
@@ -254,178 +338,7 @@ function ProductDetail() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-6 col-lg-4 col-xl-4 mb-4 mb-sm-8">
-                    <div className="product-item product-st3-item">
-                      <div className="product-thumb">
-                        <NavLink className="d-block" to="/productdetail">
-                          <img
-                            src={product2}
-                            width="370"
-                            height="450"
-                            alt="Image-HasTech"
-                          />
-                        </NavLink>
-                        {/* <span className="flag-new">new</span> */}
-                        <div className="product-action">
-                          <button
-                            type="button"
-                            className="product-action-btn action-btn-quick-view"
-                            data-bs-toggle="modal"
-                            data-bs-target="#action-QuickViewModal"
-                          >
-                            <i className="fa fa-expand"></i>
-                          </button>
-                          <button
-                            type="button"
-                            className="product-action-btn action-btn-cart"
-                            data-bs-toggle="modal"
-                            data-bs-target="#action-CartAddModal"
-                          >
-                            <span>Add to cart</span>
-                          </button>
-                          <button
-                            type="button"
-                            className="product-action-btn action-btn-wishlist"
-                            data-bs-toggle="modal"
-                            data-bs-target="#action-WishlistModal"
-                          >
-                            <i className="fa fa-heart-o"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div className="product-info">
-                        <div className="product-rating">
-                          <div className="rating">
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-half-o"></i>
-                          </div>
-                          <div className="reviews">150 reviews</div>
-                        </div>
-                        <h4 className="title">
-                          <a href="product-details.html">Modern Eye Brush</a>
-                        </h4>
-                        <div className="prices">
-                          <span className="price">$210.00</span>
-                          <span className="price-old">300.00</span>
-                        </div>
-                      </div>
-                      <div className="product-action-bottom">
-                        <button
-                          type="button"
-                          className="product-action-btn action-btn-quick-view"
-                          data-bs-toggle="modal"
-                          data-bs-target="#action-QuickViewModal"
-                        >
-                          <i className="fa fa-expand"></i>
-                        </button>
-                        <button
-                          type="button"
-                          className="product-action-btn action-btn-wishlist"
-                          data-bs-toggle="modal"
-                          data-bs-target="#action-WishlistModal"
-                        >
-                          <i className="fa fa-heart-o"></i>
-                        </button>
-                        <button
-                          type="button"
-                          className="product-action-btn action-btn-cart"
-                          data-bs-toggle="modal"
-                          data-bs-target="#action-CartAddModal"
-                        >
-                          <span>Add to cart</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 col-lg-4 col-xl-4 mb-4 mb-sm-8">
-                    <div className="product-item product-st3-item">
-                      <div className="product-thumb">
-                        <NavLink className="d-block" to="/productdetail/1">
-                          <img
-                            src={product3}
-                            width="370"
-                            height="450"
-                            alt="Image-HasTech"
-                          />
-                        </NavLink>
-                        {/* <span className="flag-new">new</span> */}
-                        <div className="product-action">
-                          <button
-                            type="button"
-                            className="product-action-btn action-btn-quick-view"
-                            data-bs-toggle="modal"
-                            data-bs-target="#action-QuickViewModal"
-                          >
-                            <i className="fa fa-expand"></i>
-                          </button>
-                          <button
-                            type="button"
-                            className="product-action-btn action-btn-cart"
-                            data-bs-toggle="modal"
-                            data-bs-target="#action-CartAddModal"
-                          >
-                            <span>Add to cart</span>
-                          </button>
-                          <button
-                            type="button"
-                            className="product-action-btn action-btn-wishlist"
-                            data-bs-toggle="modal"
-                            data-bs-target="#action-WishlistModal"
-                          >
-                            <i className="fa fa-heart-o"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div className="product-info">
-                        <div className="product-rating">
-                          <div className="rating">
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-o"></i>
-                            <i className="fa fa-star-half-o"></i>
-                          </div>
-                          <div className="reviews">150 reviews</div>
-                        </div>
-                        <h4 className="title">
-                          <a href="product-details.html">Impulse Duffle</a>
-                        </h4>
-                        <div className="prices">
-                          <span className="price">$210.00</span>
-                          <span className="price-old">300.00</span>
-                        </div>
-                      </div>
-                      <div className="product-action-bottom">
-                        <button
-                          type="button"
-                          className="product-action-btn action-btn-quick-view"
-                          data-bs-toggle="modal"
-                          data-bs-target="#action-QuickViewModal"
-                        >
-                          <i className="fa fa-expand"></i>
-                        </button>
-                        <button
-                          type="button"
-                          className="product-action-btn action-btn-wishlist"
-                          data-bs-toggle="modal"
-                          data-bs-target="#action-WishlistModal"
-                        >
-                          <i className="fa fa-heart-o"></i>
-                        </button>
-                        <button
-                          type="button"
-                          className="product-action-btn action-btn-cart"
-                          data-bs-toggle="modal"
-                          data-bs-target="#action-CartAddModal"
-                        >
-                          <span>Add to cart</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                
                 </div>
               </div>
             </div>

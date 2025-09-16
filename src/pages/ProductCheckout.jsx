@@ -1,8 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import useCartStore from "../cartstore";
 function ProductCheckout() {
-  const navigate = useNavigate()
+  const { cart, cartTotal } = useCartStore();
+  console.log(cart);
+
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -54,7 +58,7 @@ function ProductCheckout() {
     if (validateForm()) {
       console.log("Form Submitted", formData);
       alert("Order placed successfully!");
-      navigate('/confirmation')
+      navigate("/confirmation");
     } else {
       console.log("Validation errors");
     }
@@ -351,25 +355,24 @@ function ProductCheckout() {
                         </tr>
                       </thead>
                       <tbody className="table-body">
-                        <tr className="cart-item">
-                          <td className="product-name">
-                            Satin gown{" "}
-                            <span className="product-quantity">× 1</span>
-                          </td>
-                          <td className="product-total">£69.99</td>
-                        </tr>
-                        <tr className="cart-item">
-                          <td className="product-name">
-                            Printed cotton t-shirt{" "}
-                            <span className="product-quantity">× 1</span>
-                          </td>
-                          <td className="product-total">£20.00</td>
-                        </tr>
+                        {cart.map((item, index) => (
+                          <tr className="cart-item" key={index}>
+                            <td className="product-name">
+                              {item.title}{" "}
+                              <span className="product-quantity">
+                                × {item.qty}
+                              </span>
+                            </td>
+                            <td className="product-total">
+                              {item.price * item.qty}
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                       <tfoot className="table-foot">
                         <tr className="cart-subtotal">
                           <th>Subtotal</th>
-                          <td>£89.99</td>
+                          <td>Rs {cartTotal()}</td>
                         </tr>
                         <tr className="shipping">
                           <th>Shipping</th>
@@ -377,7 +380,7 @@ function ProductCheckout() {
                         </tr>
                         <tr className="order-total">
                           <th>Total </th>
-                          <td>£91.99</td>
+                          <td>Rs {cartTotal() + 300}</td>
                         </tr>
                       </tfoot>
                     </table>

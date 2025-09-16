@@ -4,6 +4,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useCartStore from "../cartstore";
+import { Avatar, Indicator } from "@mantine/core";
 function Navbar() {
   const { cart } = useCartStore();
   const totalcartItems = cart.length;
@@ -86,13 +87,22 @@ function Navbar() {
                       <FaMagnifyingGlass />
                     </span>
                   </button> */}
-                  <NavLink to="/cart" className="relative inline-block">
-                    <FaShoppingCart color="pink" size={24} />
-                    {cart.length > 0 && (
-                      <span className="cart-badge">{cart.length}</span>
-                    )}
+                  <NavLink to="/cart">
+                    <Indicator
+                      label={cart.length}
+                      processing
+                      size={20}
+                      offset={7}
+                      position="bottom-end"
+                      color="red"
+                      withBorder
+                      disabled={cart.length === 0}
+                    >
+                      <Avatar size="md" radius="xl" color="gray">
+                        <FaShoppingCart color="pink" size={20} />
+                      </Avatar>
+                    </Indicator>
                   </NavLink>
-
                   <button
                     className="header-menu-btn"
                     type="button"
@@ -113,7 +123,6 @@ function Navbar() {
         {/* <div id="scroll-to-top" className="scroll-to-top">
           <span className="fa fa-angle-up"></span>
         </div> */}
-
 
         <aside
           className="off-canvas-wrapper offcanvas offcanvas-start"

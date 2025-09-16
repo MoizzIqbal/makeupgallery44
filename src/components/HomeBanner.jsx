@@ -5,7 +5,9 @@ import slider1 from "../assets/images/slider/slider1.webp";
 import slider2 from "../assets/images/slider/slider2.webp";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-
+import { FaFacebook } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { RiInstagramFill } from "react-icons/ri";
 function HomeBanner() {
   return (
     <>
@@ -64,18 +66,19 @@ function HomeBanner() {
           <div className="hero-slider-pagination"></div>
         </div>
         <div className="hero-slide-social-media">
-          <a href="" target="_blank" rel="noopener">
-            <i className="fa fa-whatsapp"></i>
+          <a  href="https://wa.me/923064492925" target="_blank" rel="noopener">
+            {/* <i className="fa fa-whatsapp"></i> */}
+            <IoLogoWhatsapp />
           </a>
           <a
             href="https://www.instagram.com/makeupgallery.44?igsh=eTBrZzFicnF0YWFs2"
             target="_blank"
             rel="noopener"
           >
-            <i className="fa fa-instagram"></i>
+          <RiInstagramFill />
           </a>
-          <a href="" target="_blank" rel="noopener">
-            <i className="fa fa-facebook"></i>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener">
+           <FaFacebook />
           </a>
         </div>
       </section>

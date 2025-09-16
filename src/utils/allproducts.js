@@ -17,7 +17,7 @@ export const allproducts = [
     image: product1,
     detailImages: [product1, product3, product5, product2],
     category: "Blush",
-    rating: 5,
+    rating: 4,
     quantity: 120,
   },
   {
