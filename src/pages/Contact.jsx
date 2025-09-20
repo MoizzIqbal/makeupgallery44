@@ -5,6 +5,7 @@ import callicon from "../assets/images/icons/1.webp";
 import emailicon from "../assets/images/icons/2.webp";
 import locicon from "../assets/images/icons/3.webp";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 function Contact() {
   const [formData, setFormdata] = useState({
     fname: "",
@@ -53,6 +54,9 @@ function Contact() {
 
   return (
     <>
+      <Helmet>
+        <title>Contact Us</title>
+      </Helmet>
       <main className="main-content">
         <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
           <div class="container">
@@ -69,7 +73,7 @@ function Contact() {
         <section className="contact-area">
           <div className="container">
             <div className="row">
-              <div className="offset-lg-6 col-lg-6" data-aos='fade-left'>
+              <div className="offset-lg-6 col-lg-6" data-aos="fade-left">
                 <div className="section-title position-relative">
                   <h2 className="title">Get in touch</h2>
                   <p className="m-0">
@@ -163,11 +167,11 @@ function Contact() {
           <div
             className="contact-left-img "
             style={{ backgroundImage: `url(${contactimg})` }}
-            data-aos='fade-right'
+            data-aos="fade-right"
           ></div>
         </section>
 
-        <section className="section-space" data-aos='fade-up'>
+        <section className="section-space" data-aos="fade-up">
           <div className="container">
             <div className="contact-info">
               <div className="contact-info-item">

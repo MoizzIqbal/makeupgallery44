@@ -7,7 +7,7 @@ import Homecategory from "../components/Homecategory";
 import HomeBanner from "../components/HomeBanner";
 import HomeJoinUs from "../components/HomeJoinUs";
 import HomeTopSale from "../components/HomeTopSale";
-
+import { Helmet } from 'react-helmet-async';
 function Home() {
   useEffect(() => {
     window.scrollTo({
@@ -18,6 +18,11 @@ function Home() {
 
   return (
     <>
+    <Helmet>
+      <title>
+        Makeupgallery44
+      </title>
+    </Helmet>
       <main className="main-content">
         <HomeBanner />
         <Homecategory />

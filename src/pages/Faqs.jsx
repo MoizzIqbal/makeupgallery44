@@ -1,17 +1,20 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import faqimg from "../assets/images/photos/faq-home.webp";
 import faqtext from "../assets/images/photos/faq.webp";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 function Faqs() {
-  
-    useEffect(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // or "auto" if you want instant
-      });
-    }, []);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // or "auto" if you want instant
+    });
+  }, []);
   return (
     <>
+      <Helmet>
+        <title>Faqs</title>
+      </Helmet>
       <main className="main-content">
         <nav aria-label="breadcrumb" className="breadcrumb-style1">
           <div className="container">
@@ -42,7 +45,10 @@ function Faqs() {
                   <h2 className="faq-title">Frequently Questions</h2>
                   <div className="faq-line"></div>
                   <p className="faq-desc">
-                  <i>Find quick answers to common questions about our products, shipping, and services.</i>
+                    <i>
+                      Find quick answers to common questions about our products,
+                      shipping, and services.
+                    </i>
                   </p>
                 </div>
               </div>
@@ -60,7 +66,7 @@ function Faqs() {
                         aria-expanded="true"
                         aria-controls="collapse1"
                       >
-                       What types of makeup products do you offer?
+                        What types of makeup products do you offer?
                       </button>
                     </h2>
                     <div
@@ -71,7 +77,9 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                         We provide a wide range of cosmetics including lipsticks, foundations, blushes, eyeshadows, highlighters, and more from trusted brands.
+                          We provide a wide range of cosmetics including
+                          lipsticks, foundations, blushes, eyeshadows,
+                          highlighters, and more from trusted brands.
                         </p>
                       </div>
                     </div>
@@ -97,7 +105,9 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                          Each product includes shade details and recommendations. You can also contact our support team for personalized guidance.
+                          Each product includes shade details and
+                          recommendations. You can also contact our support team
+                          for personalized guidance.
                         </p>
                       </div>
                     </div>
@@ -123,7 +133,8 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                         We accept major credit/debit cards, bank transfers, and Cash on Delivery (COD) in selected locations.
+                          We accept major credit/debit cards, bank transfers,
+                          and Cash on Delivery (COD) in selected locations.
                         </p>
                       </div>
                     </div>
@@ -138,7 +149,7 @@ function Faqs() {
                         aria-expanded="false"
                         aria-controls="collapse4"
                       >
-                       How long will it take to receive my order?
+                        How long will it take to receive my order?
                       </button>
                     </h2>
                     <div
@@ -149,7 +160,8 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                         Orders are usually delivered within 3–5 business days, depending on your location.
+                          Orders are usually delivered within 3–5 business days,
+                          depending on your location.
                         </p>
                       </div>
                     </div>
@@ -175,7 +187,9 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                        Once your order is confirmed, you will receive a tracking ID and link via email or SMS to track your shipment in real-time.
+                          Once your order is confirmed, you will receive a
+                          tracking ID and link via email or SMS to track your
+                          shipment in real-time.
                         </p>
                       </div>
                     </div>
@@ -201,7 +215,9 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                          Shipping fees are calculated based on your delivery location, package weight, and the courier service selected.
+                          Shipping fees are calculated based on your delivery
+                          location, package weight, and the courier service
+                          selected.
                         </p>
                       </div>
                     </div>
@@ -216,7 +232,8 @@ function Faqs() {
                         aria-expanded="false"
                         aria-controls="collapse7"
                       >
-                        Can I combine shipping charges if I order multiple items?
+                        Can I combine shipping charges if I order multiple
+                        items?
                       </button>
                     </h2>
                     <div
@@ -227,12 +244,13 @@ function Faqs() {
                     >
                       <div className="accordion-body">
                         <p>
-                         Yes, if all items are ordered together, shipping is charged only once based on the combined package weight.
+                          Yes, if all items are ordered together, shipping is
+                          charged only once based on the combined package
+                          weight.
                         </p>
                       </div>
                     </div>
                   </div>
-                
                 </div>
               </div>
             </div>

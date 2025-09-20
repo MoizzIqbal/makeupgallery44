@@ -12,6 +12,7 @@ import brandlogo4 from "../assets/images/brand-logo/4.webp";
 import { NavLink } from "react-router-dom";
 import CountUp from "react-countup";
 import { motion, useScroll } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 function About() {
   const { scrollYProgress } = useScroll();
 
@@ -23,6 +24,9 @@ function About() {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>About Us</title>
+      </Helmet>
       <motion.div
         id="scroll-indicator"
         style={{
@@ -52,7 +56,7 @@ function About() {
         <section className="page-header-area">
           <div className="container">
             <div className="row align-items-center">
-              <div className="col-md-7 col-lg-7 col-xl-5" data-aos='fade-right'>
+              <div className="col-md-7 col-lg-7 col-xl-5" data-aos="fade-right">
                 <div className="page-header-content">
                   <div className="title-img">
                     <img src={abouttext} alt="Image" />
@@ -71,7 +75,7 @@ function About() {
                   </p>
                 </div>
               </div>
-              <div className="col-md-5 col-lg-5 col-xl-7" data-aos='fade-left'>
+              <div className="col-md-5 col-lg-5 col-xl-7" data-aos="fade-left">
                 <div className="page-header-thumb">
                   <img src={aboutbg} width="570" height="669" alt="Image" />
                 </div>
@@ -82,7 +86,7 @@ function About() {
 
         <section className="funfact-area section-space">
           <div className="container">
-            <div className="row mb-n6" data-aos='fade-up'>
+            <div className="row mb-n6" data-aos="fade-up">
               <div className="col-sm-6 col-lg-4 mb-6">
                 <div className="funfact-item">
                   <div className="icon">
@@ -191,8 +195,10 @@ function About() {
               <img src={about2} alt="Image" />
             </div>
             <div className="about-content">
-              <h2 className="title" data-aos='fade-up'>Best Cosmetics Provider</h2>
-              <p className="desc" data-aos='fade-up'>
+              <h2 className="title" data-aos="fade-up">
+                Best Cosmetics Provider
+              </h2>
+              <p className="desc" data-aos="fade-up">
                 As the best cosmetics provider, makegallery brings you
                 high-quality makeup crafted for every style and occasion. Our
                 mission is to make beauty elegant, effortless, and accessible.
@@ -202,7 +208,7 @@ function About() {
         </section>
         <div className="feature-area section-space">
           <div className="container">
-            <div className="row mb-n9" data-aos='fade-up'>
+            <div className="row mb-n9" data-aos="fade-up">
               <div className="col-md-6 col-lg-4 mb-8">
                 <div className="feature-item">
                   <h5 className="title">

@@ -4,14 +4,18 @@ import useCartStore from "../cartstore";
 import { RxCross2 } from "react-icons/rx";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
+import { Helmet } from "react-helmet-async";
 function Cart() {
-  const { cart, removeFromCart, increaseQty, decreaseQty, cartTotal } =
+  const { cart, removeFromCart, increaseQty, decreaseQty, cartTotal, clearCart } =
     useCartStore();
 
   console.log(cart);
 
   return (
     <>
+      <Helmet>
+        <title>Cart</title>
+      </Helmet>
       <main className="main-content">
         <nav aria-label="breadcrumb" className="breadcrumb-style1">
           <div className="container">
@@ -29,6 +33,11 @@ function Cart() {
         <section className="section-space">
           <div className="container">
             <div className="shopping-cart-form table-responsive">
+             <div className="text-end">
+                    <p className="mb-3">
+                    <button className='btn btn-sm rounded-1' onClick={clearCart()}> Clear Cart</button>
+                    </p>
+                  </div>
               <form>
                 <table className="table text-center">
                   <thead>
@@ -62,7 +71,7 @@ function Cart() {
                               className="remove"
                               onClick={() => removeFromCart(item.id)}
                             >
-                             <RxCross2 />
+                              <RxCross2 />
                             </a>
                           </td>
                           <td className="product-thumbnail">
@@ -86,7 +95,6 @@ function Cart() {
                           <td className="product-quantity">
                             <div className="pro-qty flex items-center justify-center gap-2">
                               <div
-                              
                                 className="dec qty-btn"
                                 onClick={() => decreaseQty(item.id)}
                               >
@@ -99,7 +107,6 @@ function Cart() {
                                 readOnly
                               />
                               <div
-                                
                                 className="inc qty-btn"
                                 onClick={() => increaseQty(item.id)}
                               >
@@ -138,12 +145,10 @@ function Cart() {
                         <td>
                           <ul className="shipping-list">
                             <li className="radio">
-                             
                               <label htmlFor="radio1">
                                 Shipping Charges: <span>Rs 300</span>
                               </label>
                             </li>
-                         
                           </ul>
                           {/* <p className="destination">
                             Shipping to <strong>Pakistan</strong>.

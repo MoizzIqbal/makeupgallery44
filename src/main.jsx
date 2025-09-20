@@ -9,10 +9,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import { HelmetProvider } from "react-helmet-async";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <MantineProvider>
-      <App />
-    </MantineProvider>
+    <HelmetProvider>
+      <MantineProvider>
+        <App />
+      </MantineProvider>
+    </HelmetProvider>
   </StrictMode>
 );

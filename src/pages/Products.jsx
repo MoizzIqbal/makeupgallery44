@@ -6,6 +6,7 @@ import { Pagination } from "@mantine/core";
 import { allproducts } from "../utils/allproducts";
 import useCartStore from "../cartstore";
 import { FaStar } from "react-icons/fa6";
+import { Helmet } from "react-helmet-async";
 console.log(allproducts);
 
 function Products() {
@@ -55,6 +56,9 @@ function Products() {
 
   return (
     <>
+      <Helmet>
+        <title>Products</title>
+      </Helmet>
       <aside
         className="product-action-modal modal fade"
         id="action-CartAddModal"
@@ -202,10 +206,7 @@ function Products() {
                               {item.rating ? (
                                 Array(item.rating)
                                   .fill(0)
-                                  .map((_, index) => (
-                                  
-                                      <FaStar  key={index}/>
-                                  ))
+                                  .map((_, index) => <FaStar key={index} />)
                               ) : (
                                 <span>no rating</span>
                               )}

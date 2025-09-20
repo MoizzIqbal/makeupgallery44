@@ -1,19 +1,22 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import text from "../assets/images/photos/page-header-text1.webp";
 import blog1 from "../assets/images/blog/1.webp";
 import blog2 from "../assets/images/blog/2.webp";
 import blog3 from "../assets/images/blog/3.webp";
+import { Helmet } from "react-helmet-async";
 function Blogs() {
-  
-    useEffect(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // or "auto" if you want instant
-      });
-    }, []);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // or "auto" if you want instant
+    });
+  }, []);
   return (
     <>
+      <Helmet>
+        <title>Blogs</title>
+      </Helmet>
       <main class="main-content">
         <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
           <div class="container">
