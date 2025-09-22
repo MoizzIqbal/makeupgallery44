@@ -6,7 +6,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { Helmet } from "react-helmet-async";
 function Cart() {
-  const { cart, removeFromCart, increaseQty, decreaseQty, cartTotal, clearCart } =
+  const { cart, removeFromCart, increaseQty, decreaseQty, cartTotal, clearCart} =
     useCartStore();
 
   console.log(cart);
@@ -35,7 +35,10 @@ function Cart() {
             <div className="shopping-cart-form table-responsive">
              <div className="text-end">
                     <p className="mb-3">
-                    <button className='btn btn-sm rounded-1' onClick={clearCart()}> Clear Cart</button>
+                    <button className='btn btn-sm rounded-1'   onClick={(e) => {
+                      e.preventDefault(); // prevent form submission
+                      clearCart(); // call the store action
+                    }}> Clear Cart</button>
                     </p>
                   </div>
               <form>
