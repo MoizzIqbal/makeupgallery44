@@ -7,12 +7,14 @@ import product3 from "../assets/images/shop/3.webp";
 import { FaStar } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigation, useParams } from "react-router-dom";
 import "@mantine/carousel/styles.css";
 import { Carousel } from "@mantine/carousel";
 import { allproducts } from "../utils/allproducts";
 import useCartStore from "../cartstore";
+import { useNavigate } from "react-router-dom";
 function ProductDetail() {
+  const navigate = useNavigate()
   const { increaseQty, decreaseQty, addToCart, cart } = useCartStore();
   const [cartItem, setCartItem] = useState(null);
 
@@ -34,6 +36,11 @@ function ProductDetail() {
     console.log(namee);
     setCartItem(namee);
     addToCart(namee);
+  };
+
+  const buynow = (product) => {
+    console.log(product);
+    navigate('/checkout')
   };
   return (
     <>
@@ -156,13 +163,14 @@ function ProductDetail() {
                         .fill(0)
                         .map((_, index) => (
                           // <i className="fa fa-star-o" key={index}></i>
-                          <FaStar  key={index}/>
+                          <FaStar key={index} />
                         ))}
                     </div>
                     <button type="button" className="product-review-show">
                       150 reviews
                     </button>
                   </div>
+                  <h5 className="price mt-2">Rs {product.price} </h5>
                   <p className="mb-7">{product.description}</p>
                   <div className="product-details-pro-qty">
                     <div className="pro-qty">
@@ -198,24 +206,22 @@ function ProductDetail() {
                   </div>
 
                   <div className="product-details-action">
-                    <h4 className="price">Rs {product.price} </h4>
-                    <div className="product-details-cart-wishlist">
-                      {/* <button
-                        type="button"
-                        className="btn-wishlist"
-                        data-bs-toggle="modal"
-                        data-bs-target="#action-WishlistModal"
-                      >
-                        <i className="fa fa-heart-o"></i>
-                      </button> */}
+                    <div className="product-details-cart-wishlist d-flex flex-column flex-sm-row gap-2 w-100">
                       <button
                         type="button"
-                        className="btn"
+                        className="btn btn-primary flex-fill"
                         data-bs-toggle="modal"
                         data-bs-target="#action-CartAddModal"
                         onClick={() => addtocart(product)}
                       >
                         Add to cart
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-success flex-fill"
+                        onClick={() => buynow(product)}
+                      >
+                        Buy Now
                       </button>
                     </div>
                   </div>
@@ -296,7 +302,6 @@ function ProductDetail() {
                             <FaStar />
                             <FaStar />
                             <FaStar />
-                           
                           </div>
                           <div className="reviews">150 reviews</div>
                         </div>
@@ -338,7 +343,6 @@ function ProductDetail() {
                       </div>
                     </div>
                   </div>
-                
                 </div>
               </div>
             </div>
